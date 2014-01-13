@@ -2,6 +2,7 @@ package com.stacksync.syncservice.omq;
 
 import java.util.List;
 
+import com.stacksync.syncservice.models.DeviceInfo;
 import com.stacksync.syncservice.models.ObjectMetadata;
 import com.stacksync.syncservice.models.WorkspaceInfo;
 
@@ -43,4 +44,15 @@ public interface ISyncService extends Remote {
      */
     @AsyncMethod
     public void commit(String user, String requestId, WorkspaceInfo workspace, String device, List<ObjectMetadata> commitObjects);
+    
+    
+    /***
+     * Function used to register a new device.
+     * @param user The ID of the user
+     * @param requestId Used for the client to identify the request
+     * @param device Information about the device 
+     * @return A unique ID to identify the device
+     */
+    @SyncMethod(retry = 3, timeout = 5000)
+    public Long updateDevice(String user, String requestId, DeviceInfo device);
 }
