@@ -3,29 +3,21 @@ package com.stacksync.syncservice.models;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.util.Date;
 
 public class DeviceInfo implements Serializable {
 
 	private static final long serialVersionUID = 3763327030154389990L;
 	private Long id;
 	private String name;
-	private String user;
 	private String os;
-	private Date createdAt;
-	private Date lastAccessAt;
-	private String lastIp;
+	private String ip;
 	private String appVersion;
 
-	public DeviceInfo(Long id, String name, String user, String os, Date createdAt,
-			Date lastAccessAt, String lastIp, String appVersion) {
+	public DeviceInfo(Long id, String name, String os, String ip, String appVersion) {
 		this.id = id;
 		this.name = name;
-		this.user = user;
 		this.os = os;
-		this.createdAt = createdAt;
-		this.lastAccessAt = lastAccessAt;
-		this.lastIp = lastIp;
+		this.ip = ip;
 		this.appVersion = appVersion;
 	}
 
@@ -37,28 +29,12 @@ public class DeviceInfo implements Serializable {
 		this.os = os;
 	}
 
-	public Date getCreatedAt() {
-		return createdAt;
+	public String getIp() {
+		return ip;
 	}
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getLastAccessAt() {
-		return lastAccessAt;
-	}
-
-	public void setLastAccessAt(Date lastAccessAt) {
-		this.lastAccessAt = lastAccessAt;
-	}
-
-	public String getLastIp() {
-		return lastIp;
-	}
-
-	public void setLastIp(String lastIp) {
-		this.lastIp = lastIp;
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 
 	public String getAppVersion() {
@@ -83,14 +59,6 @@ public class DeviceInfo implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
 	}
 
 	public boolean isValid() {
