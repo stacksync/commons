@@ -23,7 +23,6 @@ public class ObjectMetadata implements Serializable {
 	private Long fileSize;
 	private Boolean isFolder;
 	private String fileName;
-	private String filePath;
 	private String mimetype;
 
 	private Integer level; // for API calls
@@ -38,7 +37,7 @@ public class ObjectMetadata implements Serializable {
 
 	public ObjectMetadata(Long fileId, Long version, Long parentFileId,
 			Long parentFileVersion, Date serverDateModified, String status, Date clientDateModified, Long checksum,
-			Long deviceId, List<String> chunks, Long fileSize, boolean isFolder, String fileName, String filePath,
+			Long deviceId, List<String> chunks, Long fileSize, boolean isFolder, String fileName,
 			String mimetype) {
 
 		this.fileId = fileId;
@@ -53,7 +52,6 @@ public class ObjectMetadata implements Serializable {
 		this.fileSize = fileSize;
 		this.isFolder = isFolder;
 		this.fileName = fileName;
-		this.filePath = filePath;
 		this.mimetype = mimetype;
 		this.chunks = chunks;
 		this.isRoot = false;
@@ -131,13 +129,6 @@ public class ObjectMetadata implements Serializable {
 		this.fileName = fileName;
 	}
 
-	public String getFilePath() {
-		return filePath;
-	}
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
 
 	public Long getVersion() {
 		return version;
@@ -228,7 +219,6 @@ public class ObjectMetadata implements Serializable {
 
 		if (!metadata.getStatus().equals(this.status)
 				|| !metadata.getFileName().equals(this.fileName)
-				|| !metadata.getFilePath().equals(this.filePath) 
 				|| !metadata.getMimetype().equals(this.mimetype)) {
 			return false;
 		}
