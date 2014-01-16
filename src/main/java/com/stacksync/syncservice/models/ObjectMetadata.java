@@ -7,15 +7,11 @@ import java.util.List;
 
 public class ObjectMetadata implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String rootId;
+	private static final long serialVersionUID = -6706307150772012078L;
+
 	private Long fileId;
 	private Long version;
-	private String parentRootId;
+	private Long deviceId;
 	private Long parentFileId;
 	private Long parentFileVersion;
 	private Date serverDateModified; // Time stamp -> Date Java -> public
@@ -23,7 +19,6 @@ public class ObjectMetadata implements Serializable {
 	private String status;
 	private Date clientDateModified;
 	private Long checksum;
-	private String clientName;
 	private List<String> chunks; // more optimal
 	private Long fileSize;
 	private Boolean isFolder;
@@ -41,22 +36,20 @@ public class ObjectMetadata implements Serializable {
 	}
 
 
-	public ObjectMetadata(String rootId, Long fileId, Long version, String parentRootId, Long parentFileId,
+	public ObjectMetadata(Long fileId, Long version, Long parentFileId,
 			Long parentFileVersion, Date serverDateModified, String status, Date clientDateModified, Long checksum,
-			String clientName, List<String> chunks, Long fileSize, boolean isFolder, String fileName, String filePath,
+			Long deviceId, List<String> chunks, Long fileSize, boolean isFolder, String fileName, String filePath,
 			String mimetype) {
 
-		this.rootId = rootId;
 		this.fileId = fileId;
 		this.version = version;
-		this.parentRootId = parentRootId;
 		this.parentFileId = parentFileId;
 		this.parentFileVersion = parentFileVersion;
 		this.serverDateModified = serverDateModified;
 		this.status = status;
 		this.clientDateModified = clientDateModified;
 		this.checksum = checksum;
-		this.clientName = clientName;
+		this.deviceId = deviceId;
 		this.fileSize = fileSize;
 		this.isFolder = isFolder;
 		this.fileName = fileName;
@@ -70,28 +63,12 @@ public class ObjectMetadata implements Serializable {
 		}
 	}
 
-	public String getRootId() {
-		return rootId;
-	}
-
-	public void setRootId(String rootId) {
-		this.rootId = rootId;
-	}
-
 	public Long getFileId() {
 		return fileId;
 	}
 
 	public void setFileId(Long fileId) {
 		this.fileId = fileId;
-	}
-
-	public String getParentRootId() {
-		return parentRootId;
-	}
-
-	public void setParentRootId(String parentRootId) {
-		this.parentRootId = parentRootId;
 	}
 
 	public Long getParentFileId() {
@@ -130,12 +107,12 @@ public class ObjectMetadata implements Serializable {
 		this.checksum = checksum;
 	}
 
-	public String getClientName() {
-		return clientName;
+	public Long getDeviceId() {
+		return deviceId;
 	}
 
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
+	public void setDeviceId(Long deviceId) {
+		this.deviceId = deviceId;
 	}
 
 	public Long getFileSize() {
@@ -242,14 +219,17 @@ public class ObjectMetadata implements Serializable {
 
 	public boolean equals(ObjectMetadata metadata) {
 
-		if (!metadata.getFileId().equals(this.fileId) || !metadata.getChecksum().equals(this.checksum)
+		if (!metadata.getFileId().equals(this.fileId) 
+				|| !metadata.getDeviceId().equals(this.deviceId)
+				|| !metadata.getChecksum().equals(this.checksum)
 				|| !metadata.getFileSize().equals(this.fileSize)) {
 			return false;
 		}
 
-		if (!metadata.getRootId().equals(this.rootId) || !metadata.getStatus().equals(this.status)
-				|| !metadata.getClientName().equals(this.clientName) || !metadata.getFileName().equals(this.fileName)
-				|| !metadata.getFilePath().equals(this.filePath) || !metadata.getMimetype().equals(this.mimetype)) {
+		if (!metadata.getStatus().equals(this.status)
+				|| !metadata.getFileName().equals(this.fileName)
+				|| !metadata.getFilePath().equals(this.filePath) 
+				|| !metadata.getMimetype().equals(this.mimetype)) {
 			return false;
 		}
 
@@ -259,12 +239,6 @@ public class ObjectMetadata implements Serializable {
 
 		if (metadata.isFolder() != this.isFolder) {
 			return false;
-		}
-
-		if (this.parentRootId != null && metadata.getParentRootId() != null) {
-			if (!metadata.getParentRootId().equals(this.parentRootId)) {
-				return false;
-			}
 		}
 
 		if (this.parentFileId != null && metadata.getParentFileId() != null) {

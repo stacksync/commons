@@ -4,16 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 
-/**
- * 
- * @author Sergi Toda <sergi.toda@estudiants.urv.cat>
- * 
- */
 public class CommitResult implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private String requestID;

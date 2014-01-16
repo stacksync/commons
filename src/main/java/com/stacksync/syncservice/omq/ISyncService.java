@@ -51,14 +51,14 @@ public interface ISyncService extends Remote {
 	 *            Used for the client to identify the request
 	 * @param workspace
 	 *            The ID of the workspace
-	 * @param device
+	 * @param deviceId
 	 *            The ID of the device
 	 * @param commitObjects
 	 *            List of {@link ObjectMetadata} with the newly modified objects
 	 */
 	@AsyncMethod
 	public void commit(String user, String requestId, WorkspaceInfo workspace,
-			String device, List<ObjectMetadata> commitObjects);
+			Long deviceId, List<ObjectMetadata> commitObjects);
 
 	/***
 	 * Function used to update information about a device. If the device ID is
