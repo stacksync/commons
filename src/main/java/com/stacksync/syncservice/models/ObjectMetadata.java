@@ -24,10 +24,11 @@ public class ObjectMetadata implements Serializable {
 	private Boolean isFolder;
 	private String fileName;
 	private String mimetype;
+	private String path;
 
 	private Integer level; // for API calls
 	private Boolean isRoot; // for API calls
-	private List<ObjectMetadata> content;
+	private List<ObjectMetadata> children;
 
 	public ObjectMetadata() {
 		this.isRoot = false;
@@ -37,7 +38,7 @@ public class ObjectMetadata implements Serializable {
 
 	public ObjectMetadata(Long fileId, Long version, Long parentFileId,
 			Long parentFileVersion, Date serverDateModified, String status, Date clientDateModified, Long checksum,
-			Long deviceId, List<String> chunks, Long fileSize, boolean isFolder, String fileName,
+			Long deviceId, String path, List<String> chunks, Long fileSize, boolean isFolder, String fileName,
 			String mimetype) {
 
 		this.fileId = fileId;
@@ -53,6 +54,7 @@ public class ObjectMetadata implements Serializable {
 		this.isFolder = isFolder;
 		this.fileName = fileName;
 		this.mimetype = mimetype;
+		this.path = path;
 		this.chunks = chunks;
 		this.isRoot = false;
 
@@ -128,6 +130,14 @@ public class ObjectMetadata implements Serializable {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
 
 
 	public Long getVersion() {
@@ -190,21 +200,21 @@ public class ObjectMetadata implements Serializable {
 		return this.isRoot;
 	}
 
-	public List<ObjectMetadata> getContent() {
-		if (this.content == null)
+	public List<ObjectMetadata> getChildren() {
+		if (this.children == null)
 			return new ArrayList<ObjectMetadata>();
 
-		return this.content;
+		return this.children;
 	}
 
-	public void setContent(List<ObjectMetadata> content) {
-		this.content = content;
+	public void setChildren(List<ObjectMetadata> children) {
+		this.children = children;
 	}
 
-	public void addObjectMetadata(ObjectMetadata objectMetadata) {
-		if (this.content == null)
-			this.content = new ArrayList<ObjectMetadata>();
-		this.content.add(objectMetadata);
+	public void addChild(ObjectMetadata objectMetadata) {
+		if (this.children == null)
+			this.children = new ArrayList<ObjectMetadata>();
+		this.children.add(objectMetadata);
 	}
 
 
@@ -262,7 +272,7 @@ public class ObjectMetadata implements Serializable {
 	public String toString() {
 
 		String format = "ObjectMetadata: {fileId=%s, fileName=%s, chunks=%s, content=%s}";
-		String result = String.format(format, fileId, fileName, chunks.size(), (content == null) ? 0 : content.size());
+		String result = String.format(format, fileId, fileName, chunks.size(), (children == null) ? 0 : children.size());
 
 		return result;
 	}

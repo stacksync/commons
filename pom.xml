@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>syncservice-common</groupId>
 	<artifactId>syncservice-common</artifactId>
-	<version>1.2.3</version>
+	<version>1.2.4</version>
 	<name>syncservice-common</name>
 	<description>Common classes between sync service and desktop client.</description>
 
