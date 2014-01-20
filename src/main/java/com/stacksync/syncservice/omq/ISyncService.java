@@ -3,7 +3,7 @@ package com.stacksync.syncservice.omq;
 import java.util.List;
 
 import com.stacksync.syncservice.models.DeviceInfo;
-import com.stacksync.syncservice.models.ObjectMetadata;
+import com.stacksync.syncservice.models.ItemMetadata;
 import com.stacksync.syncservice.models.WorkspaceInfo;
 
 import omq.Remote;
@@ -24,10 +24,10 @@ public interface ISyncService extends Remote {
 	 *            Used for the client to identify the request
 	 * @param workspace
 	 *            The ID of the workspace
-	 * @return A list of {@link ObjectMetadata}
+	 * @return A list of {@link ItemMetadata}
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public List<ObjectMetadata> getChanges(String user, String requestId,
+	public List<ItemMetadata> getChanges(String user, String requestId,
 			WorkspaceInfo workspace);
 
 	/***
@@ -54,11 +54,11 @@ public interface ISyncService extends Remote {
 	 * @param deviceId
 	 *            The ID of the device
 	 * @param commitObjects
-	 *            List of {@link ObjectMetadata} with the newly modified objects
+	 *            List of {@link ItemMetadata} with the newly modified objects
 	 */
 	@AsyncMethod
 	public void commit(String user, String requestId, WorkspaceInfo workspace,
-			Long deviceId, List<ObjectMetadata> commitObjects);
+			Long deviceId, List<ItemMetadata> commitObjects);
 
 	/***
 	 * Function used to update information about a device. If the device ID is
