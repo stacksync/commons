@@ -50,7 +50,7 @@ public interface ISyncService extends Remote {
 	 * @param requestId
 	 *            Used for the client to identify the request
 	 * @param workspace
-	 *            The ID of the workspace
+	 *            The ID of the workspace L
 	 * @param deviceId
 	 *            The ID of the device
 	 * @param commitObjects
@@ -77,4 +77,20 @@ public interface ISyncService extends Remote {
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
 	public Long updateDevice(String user, String requestId, DeviceInfo device);
+	
+	/***
+	 * Function used to create a share proposal through the desktop client.
+	 * 
+	 * @param user
+	 *            The ID of the user
+	 * @param requestId
+	 *            Used for the client to identify the request
+	 * @param emails
+	 *            A list of emails to with the folder has been shared with
+	 * @param folderName
+	 * 			  The name of the new folder
+	 * @return The workspace ID corresponding to the shared folder.
+	 */
+	@SyncMethod(retry = 3, timeout = 5000)
+	public Long createShareProposal(String user, String requestId, List<String> emails, String folderName);
 }

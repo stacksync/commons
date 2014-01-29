@@ -35,26 +35,26 @@ public class ItemMetadata implements Serializable {
 		this.chunks = new ArrayList<String>();
 	}
 
-	public ItemMetadata(Long id, Long version, Long deviceId,
-			Long parentId, Long parentVersion, String status,
-			Date modifiedAt, Long checksum, Long size, boolean isFolder,
-			String filename, String mimetype, String path, List<String> chunks) {
+	public ItemMetadata(Long id, Long version, Long deviceId, Long parentId,
+			Long parentVersion, String status, Date modifiedAt, Long checksum,
+			Long size, boolean isFolder, String filename, String mimetype,
+			String path, List<String> chunks) {
 
-		this.id=id;
-		this.version=version;
-		this.deviceId=deviceId;
-		this.parentId=parentId;
-		this.parentVersion=parentVersion;
+		this.id = id;
+		this.version = version;
+		this.deviceId = deviceId;
+		this.parentId = parentId;
+		this.parentVersion = parentVersion;
 
-		this.status=status;
-		this.modifiedAt=modifiedAt;
-		this.checksum=checksum;
-		this.size=size;
-		this.isFolder=isFolder;
-		this.filename=filename;
-		this.mimetype=mimetype;
-		this.path=path;
-		
+		this.status = status;
+		this.modifiedAt = modifiedAt;
+		this.checksum = checksum;
+		this.size = size;
+		this.isFolder = isFolder;
+		this.filename = filename;
+		this.mimetype = mimetype;
+		this.path = path;
+
 		this.isRoot = false;
 
 		if (chunks == null) {
@@ -198,7 +198,6 @@ public class ItemMetadata implements Serializable {
 		this.isRoot = isRoot;
 	}
 
-
 	public List<ItemMetadata> getChildren() {
 		if (this.children == null)
 			return new ArrayList<ItemMetadata>();
@@ -245,8 +244,7 @@ public class ItemMetadata implements Serializable {
 			}
 		}
 
-		if (this.parentVersion != null
-				&& metadata.getParentVersion() != null) {
+		if (this.parentVersion != null && metadata.getParentVersion() != null) {
 			if (!metadata.getParentVersion().equals(this.parentVersion)) {
 				return false;
 			}
