@@ -1,4 +1,4 @@
-package com.stacksync.syncservice.models;
+package com.stacksync.commons.models;
 
 import java.io.Serializable;
 

@@ -1,18 +1,13 @@
-package com.stacksync.syncservice.omq;
+package com.stacksync.commons.omq;
 
 
-import com.stacksync.syncservice.models.CommitResult;
+import com.stacksync.commons.models.CommitResult;
 
 import omq.Remote;
 import omq.client.annotation.AsyncMethod;
 import omq.client.annotation.MultiMethod;
 import omq.client.annotation.RemoteInterface;
 
-/**
- * 
- * @author Sergi Toda <sergi.toda@estudiants.urv.cat>
- * 
- */
 @RemoteInterface
 public interface RemoteWorkspace extends Remote {
 

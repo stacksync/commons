@@ -1,10 +1,12 @@
-package com.stacksync.syncservice.omq;
+package com.stacksync.commons.omq;
 
 import java.util.List;
 
-import com.stacksync.syncservice.models.DeviceInfo;
-import com.stacksync.syncservice.models.ItemMetadata;
-import com.stacksync.syncservice.models.WorkspaceInfo;
+import com.stacksync.commons.models.Device;
+import com.stacksync.commons.models.DeviceInfo;
+import com.stacksync.commons.models.ItemMetadata;
+import com.stacksync.commons.models.User;
+import com.stacksync.commons.models.Workspace;
 
 import omq.Remote;
 import omq.client.annotation.AsyncMethod;
@@ -27,8 +29,7 @@ public interface ISyncService extends Remote {
 	 * @return A list of {@link ItemMetadata}
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public List<ItemMetadata> getChanges(String user, String requestId,
-			WorkspaceInfo workspace);
+	public List<ItemMetadata> getChanges(String requestId, User user, Workspace workspace);
 
 	/***
 	 * Returns a list containing all workspaces for a given user.
@@ -37,28 +38,28 @@ public interface ISyncService extends Remote {
 	 *            The ID of the user
 	 * @param requestId
 	 *            Used for the client to identify the request
-	 * @return A list of {@link WorkspaceInfo}
+	 * @return A list of {@link Workspace}
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public List<WorkspaceInfo> getWorkspaces(String user, String requestId);
+	public List<Workspace> getWorkspaces(String user, String requestId);
 
 	/***
 	 * Function used to commit new versions of objects.
 	 * 
-	 * @param user
-	 *            The ID of the user
 	 * @param requestId
 	 *            Used for the client to identify the request
+	 * @param user
+	 *            The user that sent the commit
 	 * @param workspace
-	 *            The ID of the workspace L
-	 * @param deviceId
-	 *            The ID of the device
-	 * @param commitObjects
-	 *            List of {@link ItemMetadata} with the newly modified objects
+	 *            The workspace that the items belong to
+	 * @param device
+	 *            The device from where the commit was originated
+	 * @param items
+	 *            List of {@link ItemMetadata} with the newly modified items
 	 */
 	@AsyncMethod
-	public void commit(String user, String requestId, WorkspaceInfo workspace,
-			Long deviceId, List<ItemMetadata> commitObjects);
+	public void commit(String requestId, User user, Workspace workspace,
+			Device device, List<ItemMetadata> items);
 
 	/***
 	 * Function used to update information about a device. If the device ID is
@@ -76,7 +77,7 @@ public interface ISyncService extends Remote {
 	 * @return A unique ID to identify the device
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public Long updateDevice(String user, String requestId, DeviceInfo device);
+	public Long updateDevice(String requestId, User user, DeviceInfo deviceInfo);
 	
 	/***
 	 * Function used to create a share proposal through the desktop client.
