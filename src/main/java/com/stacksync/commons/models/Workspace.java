@@ -1,9 +1,12 @@
 package com.stacksync.commons.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Workspace {
+public class Workspace implements Serializable {
+
+	private static final long serialVersionUID = 243350300638953723L;
 
 	private Long id;
 	private Integer latestRevision;

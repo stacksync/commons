@@ -1,9 +1,12 @@
 package com.stacksync.commons.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User implements Serializable{
+
+	private static final long serialVersionUID = -8827608629982195900L;
 
 	private Long id;
 	private String name;
