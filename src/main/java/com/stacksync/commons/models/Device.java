@@ -1,12 +1,9 @@
 package com.stacksync.commons.models;
 
-import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Date;
 
-public class Device implements Serializable{
-
-	private static final long serialVersionUID = -2932481953197148130L;
+public class Device {
 
 	private Long id;
 	private String name;

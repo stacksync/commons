@@ -3,10 +3,13 @@ package com.stacksync.commons.omq;
 import java.util.List;
 
 import com.stacksync.commons.models.Device;
-import com.stacksync.commons.models.DeviceInfo;
 import com.stacksync.commons.models.ItemMetadata;
 import com.stacksync.commons.models.User;
 import com.stacksync.commons.models.Workspace;
+import com.stacksync.commons.requests.UpdateDeviceRequest;
+import com.stacksync.commons.exceptions.DeviceNotUpdatedException;
+import com.stacksync.commons.exceptions.DeviceNotValidException;
+import com.stacksync.commons.exceptions.UserNotFoundException;
 
 import omq.Remote;
 import omq.client.annotation.AsyncMethod;
@@ -65,19 +68,17 @@ public interface ISyncService extends Remote {
 	 * Function used to update information about a device. If the device ID is
 	 * empty, it will register it as a new device and return the unique ID to
 	 * the caller. Otherwise, it will update the information related to the
-	 * device ID and return the same device ID. If an error occurs and the
-	 * device information cannot be updated, it will return -1.
+	 * device ID and return the same device ID.
 	 * 
-	 * @param user
-	 *            The ID of the user
-	 * @param requestId
-	 *            Used for the client to identify the request
-	 * @param device
-	 *            Information about the device
+	 * @param UpdateDeviceRequest
+	 *            The device information to be updated 
 	 * @return A unique ID to identify the device
+	 * @throws DeviceNotUpdatedException 
+	 * @throws DeviceNotValidException 
+	 * @throws UserNotFoundException 
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public Long updateDevice(String requestId, User user, DeviceInfo deviceInfo);
+	public Long updateDevice(UpdateDeviceRequest request) throws UserNotFoundException, DeviceNotValidException, DeviceNotUpdatedException;
 	
 	/***
 	 * Function used to create a share proposal through the desktop client.
