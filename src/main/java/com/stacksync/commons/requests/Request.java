@@ -1,8 +1,11 @@
 package com.stacksync.commons.requests;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Request {
+public class Request implements Serializable{
+	
+	private static final long serialVersionUID = -8509073150924914903L;
 	
 	private String requestId;
 	private String userId;
