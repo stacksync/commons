@@ -1,8 +1,7 @@
 package com.stacksync.commons.requests;
 
 import java.io.Serializable;
-
-import com.stacksync.commons.utils.ClassUtils;
+import java.lang.reflect.Field;
 
 public class UpdateDeviceRequest extends Request implements Serializable {
 
@@ -66,7 +65,30 @@ public class UpdateDeviceRequest extends Request implements Serializable {
 
 	@Override
 	public String toString() {
-		return ClassUtils.classToString(this);
+		StringBuilder result = new StringBuilder();
+
+		result.append(this.getClass().getName());
+		result.append(" {");
+
+		// determine fields declared in this class only (no fields of
+		// superclass)
+		Field[] fields = this.getClass().getDeclaredFields();
+
+		// print field names paired with their values
+		for (Field field : fields) {
+			result.append("  ");
+			try {
+				result.append(field.getName());
+				result.append(": ");
+				// requires access to private field:
+				result.append(field.get(this));
+			} catch (IllegalAccessException ex) {
+				System.out.println(ex);
+			}
+		}
+		result.append("}");
+
+		return result.toString();
 	}
 
 }
