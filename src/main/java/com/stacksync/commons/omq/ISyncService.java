@@ -12,7 +12,6 @@ import com.stacksync.commons.exceptions.DeviceNotUpdatedException;
 import com.stacksync.commons.exceptions.DeviceNotValidException;
 import com.stacksync.commons.exceptions.ShareProposalNotCreatedException;
 import com.stacksync.commons.exceptions.UserNotFoundException;
-import com.stacksync.commons.exceptions.WorkspaceNotCreatedException;
 
 import omq.Remote;
 import omq.client.annotation.AsyncMethod;
@@ -91,5 +90,5 @@ public interface ISyncService extends Remote {
 	 * @return The workspace ID corresponding to the shared folder.
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public Long createShareProposal(ShareProposalRequest request) throws ShareProposalNotCreatedException, UserNotFoundException, WorkspaceNotCreatedException;
+	public Long createShareProposal(ShareProposalRequest request) throws ShareProposalNotCreatedException, UserNotFoundException;
 }
