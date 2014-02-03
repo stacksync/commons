@@ -6,10 +6,13 @@ import com.stacksync.commons.models.Device;
 import com.stacksync.commons.models.ItemMetadata;
 import com.stacksync.commons.models.User;
 import com.stacksync.commons.models.Workspace;
+import com.stacksync.commons.requests.ShareProposalRequest;
 import com.stacksync.commons.requests.UpdateDeviceRequest;
 import com.stacksync.commons.exceptions.DeviceNotUpdatedException;
 import com.stacksync.commons.exceptions.DeviceNotValidException;
+import com.stacksync.commons.exceptions.ShareProposalNotCreatedException;
 import com.stacksync.commons.exceptions.UserNotFoundException;
+import com.stacksync.commons.exceptions.WorkspaceNotCreatedException;
 
 import omq.Remote;
 import omq.client.annotation.AsyncMethod;
@@ -83,16 +86,10 @@ public interface ISyncService extends Remote {
 	/***
 	 * Function used to create a share proposal through the desktop client.
 	 * 
-	 * @param user
-	 *            The ID of the user
-	 * @param requestId
-	 *            Used for the client to identify the request
-	 * @param emails
-	 *            A list of emails to with the folder has been shared with
-	 * @param folderName
-	 * 			  The name of the new folder
+	 * @param ShareProposalRequest
+	 * 			  Information needed to create the sharing proposal
 	 * @return The workspace ID corresponding to the shared folder.
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public Long createShareProposal(String user, String requestId, List<String> emails, String folderName);
+	public Long createShareProposal(ShareProposalRequest request) throws ShareProposalNotCreatedException, UserNotFoundException, WorkspaceNotCreatedException;
 }
