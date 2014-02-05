@@ -6,10 +6,12 @@ import com.stacksync.commons.models.Device;
 import com.stacksync.commons.models.ItemMetadata;
 import com.stacksync.commons.models.User;
 import com.stacksync.commons.models.Workspace;
+import com.stacksync.commons.requests.GetWorkspacesRequest;
 import com.stacksync.commons.requests.ShareProposalRequest;
 import com.stacksync.commons.requests.UpdateDeviceRequest;
 import com.stacksync.commons.exceptions.DeviceNotUpdatedException;
 import com.stacksync.commons.exceptions.DeviceNotValidException;
+import com.stacksync.commons.exceptions.NoWorkspacesFoundException;
 import com.stacksync.commons.exceptions.ShareProposalNotCreatedException;
 import com.stacksync.commons.exceptions.UserNotFoundException;
 
@@ -39,14 +41,13 @@ public interface ISyncService extends Remote {
 	/***
 	 * Returns a list containing all workspaces for a given user.
 	 * 
-	 * @param user
-	 *            The ID of the user
-	 * @param requestId
-	 *            Used for the client to identify the request
+	 * @param GetWorkspacesRequest
+	 *            Information about the request
 	 * @return A list of {@link Workspace}
+	 * @throws NoWorkspacesFoundException 
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public List<Workspace> getWorkspaces(String user, String requestId);
+	public List<Workspace> getWorkspaces(GetWorkspacesRequest request) throws NoWorkspacesFoundException;
 
 	/***
 	 * Function used to commit new versions of objects.

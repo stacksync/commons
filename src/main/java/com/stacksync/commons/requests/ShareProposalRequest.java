@@ -5,10 +5,10 @@ import java.util.List;
 
 public class ShareProposalRequest extends Request implements Serializable {
 
-	private static final long serialVersionUID = -5985754297818659222L;
+	protected static final long serialVersionUID = -5985754297818659222L;
 
-	private List<String> emails;
-	private String folderName;
+	protected List<String> emails;
+	protected String folderName;
 
 	public ShareProposalRequest(String userId, List<String> emails,
 			String folderName) {

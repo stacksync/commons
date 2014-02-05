@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class UpdateDeviceRequest extends Request implements Serializable {
 
-	private static final long serialVersionUID = 3763327030154389990L;
+	protected static final long serialVersionUID = 3763327030154389990L;
 	
-	private Long deviceId;
-	private String deviceName;
-	private String os;
-	private String ip;
-	private String appVersion;
+	protected Long deviceId;
+	protected String deviceName;
+	protected String os;
+	protected String ip;
+	protected String appVersion;
 
 	public UpdateDeviceRequest(String userId, Long deviceId, String deviceName, String os, String ip, String appVersion) {
 		super(userId);
