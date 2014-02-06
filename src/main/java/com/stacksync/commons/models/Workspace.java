@@ -11,6 +11,7 @@ public class Workspace implements Serializable {
 	private Long id;
 	private Integer latestRevision;
 	private User owner;
+	private Boolean isShared;
 	private List<Item> items;
 	private List<User> users;
 
@@ -19,13 +20,14 @@ public class Workspace implements Serializable {
 	}
 
 	public Workspace(Long id) {
-		this(id, 0, null);
+		this(id, 0, null, false);
 	}
 
-	public Workspace(Long id, Integer latestRevision, User owner) {
+	public Workspace(Long id, Integer latestRevision, User owner, Boolean isShared) {
 		this.id = id;
 		this.latestRevision = latestRevision;
 		this.owner = owner;
+		this.isShared = isShared;
 		this.items = new ArrayList<Item>();
 		this.users = new ArrayList<User>();
 	}
@@ -52,6 +54,14 @@ public class Workspace implements Serializable {
 
 	public void setOwner(User owner) {
 		this.owner = owner;
+	}
+	
+	public Boolean isShared() {
+		return isShared;
+	}
+
+	public void setShared(Boolean isShared) {
+		this.isShared =isShared;
 	}
 
 	public List<Item> getItems() {
