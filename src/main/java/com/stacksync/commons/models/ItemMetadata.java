@@ -24,7 +24,6 @@ public class ItemMetadata implements Serializable {
 	private Boolean isFolder;
 	private String filename;
 	private String mimetype;
-	private String path;
 
 	private Integer level; // for API calls
 	private Boolean isRoot; // for API calls
@@ -38,7 +37,7 @@ public class ItemMetadata implements Serializable {
 	public ItemMetadata(Long id, Long version, Long deviceId, Long parentId,
 			Long parentVersion, String status, Date modifiedAt, Long checksum,
 			Long size, boolean isFolder, String filename, String mimetype,
-			String path, List<String> chunks) {
+			List<String> chunks) {
 
 		this.id = id;
 		this.version = version;
@@ -53,7 +52,6 @@ public class ItemMetadata implements Serializable {
 		this.isFolder = isFolder;
 		this.filename = filename;
 		this.mimetype = mimetype;
-		this.path = path;
 
 		this.isRoot = false;
 
@@ -172,14 +170,6 @@ public class ItemMetadata implements Serializable {
 
 	public void setMimetype(String mimetype) {
 		this.mimetype = mimetype;
-	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
 	}
 
 	public Integer getLevel() {
