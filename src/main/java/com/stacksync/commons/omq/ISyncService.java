@@ -2,18 +2,20 @@ package com.stacksync.commons.omq;
 
 import java.util.List;
 
-import com.stacksync.commons.models.Device;
 import com.stacksync.commons.models.ItemMetadata;
-import com.stacksync.commons.models.User;
 import com.stacksync.commons.models.Workspace;
+import com.stacksync.commons.requests.CommitRequest;
+import com.stacksync.commons.requests.GetChangesRequest;
 import com.stacksync.commons.requests.GetWorkspacesRequest;
 import com.stacksync.commons.requests.ShareProposalRequest;
 import com.stacksync.commons.requests.UpdateDeviceRequest;
+import com.stacksync.commons.requests.UpdateWorkspaceRequest;
 import com.stacksync.commons.exceptions.DeviceNotUpdatedException;
 import com.stacksync.commons.exceptions.DeviceNotValidException;
 import com.stacksync.commons.exceptions.NoWorkspacesFoundException;
 import com.stacksync.commons.exceptions.ShareProposalNotCreatedException;
 import com.stacksync.commons.exceptions.UserNotFoundException;
+import com.stacksync.commons.exceptions.WorkspaceNotUpdatedException;
 
 import omq.Remote;
 import omq.client.annotation.AsyncMethod;
@@ -27,16 +29,11 @@ public interface ISyncService extends Remote {
 	 * Returns a list containing all metadata objects in a workspace for a given
 	 * user.
 	 * 
-	 * @param user
-	 *            The ID of the user
-	 * @param requestId
-	 *            Used for the client to identify the request
-	 * @param workspace
-	 *            The ID of the workspace
+	 * @param request
 	 * @return A list of {@link ItemMetadata}
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public List<ItemMetadata> getChanges(String requestId, User user, Workspace workspace);
+	public List<ItemMetadata> getChanges(GetChangesRequest request);
 
 	/***
 	 * Returns a list containing all workspaces for a given user.
@@ -64,8 +61,7 @@ public interface ISyncService extends Remote {
 	 *            List of {@link ItemMetadata} with the newly modified items
 	 */
 	@AsyncMethod
-	public void commit(String requestId, User user, Workspace workspace,
-			Device device, List<ItemMetadata> items);
+	public void commit(CommitRequest request);
 
 	/***
 	 * Function used to update information about a device. If the device ID is
@@ -82,6 +78,18 @@ public interface ISyncService extends Remote {
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
 	public Long updateDevice(UpdateDeviceRequest request) throws UserNotFoundException, DeviceNotValidException, DeviceNotUpdatedException;
+	
+	/***
+	 * Function used to update information about a workspace.
+	 * 
+	 * @param UpdateDeviceRequest
+	 *            The device information to be updated 
+	 * @return A boolean representing whether the workspace successfully updated or not
+	 * @throws WorkspaceNotUpdatedException 
+	 * @throws UserNotFoundException 
+	 */
+	@SyncMethod(retry = 3, timeout = 5000)
+	public Boolean updateWorkspace(UpdateWorkspaceRequest request) throws UserNotFoundException, WorkspaceNotUpdatedException;
 	
 	/***
 	 * Function used to create a share proposal through the desktop client.

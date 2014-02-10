@@ -9,6 +9,8 @@ public class Workspace implements Serializable {
 	private static final long serialVersionUID = 243350300638953723L;
 
 	private Long id;
+	private String name;
+	private Item parentItem;
 	private Integer latestRevision;
 	private User owner;
 	private Boolean isShared;
@@ -62,6 +64,22 @@ public class Workspace implements Serializable {
 
 	public void setShared(Boolean isShared) {
 		this.isShared =isShared;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Item getParentItem() {
+		return parentItem;
+	}
+
+	public void setParentItem(Item parentItem) {
+		this.parentItem = parentItem;
 	}
 
 	public List<Item> getItems() {
