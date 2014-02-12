@@ -13,6 +13,8 @@ public class Workspace implements Serializable {
 	private Item parentItem;
 	private Integer latestRevision;
 	private User owner;
+	private String swiftContainer;
+	private String swiftURL;
 	private Boolean isShared;
 	private List<Item> items;
 	private List<User> users;
@@ -72,6 +74,22 @@ public class Workspace implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getSwiftContainer() {
+		return swiftContainer;
+	}
+
+	public void setSwiftContainer(String swiftContainer) {
+		this.swiftContainer = swiftContainer;
+	}
+
+	public String getSwiftURL() {
+		return swiftURL;
+	}
+
+	public void setSwiftURL(String swiftURL) {
+		this.swiftURL = swiftURL;
 	}
 
 	public Item getParentItem() {

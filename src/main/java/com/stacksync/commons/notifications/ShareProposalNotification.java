@@ -2,8 +2,7 @@ package com.stacksync.commons.notifications;
 
 import java.io.Serializable;
 
-public class ShareProposalNotification extends Notification implements
-		Serializable {
+public class ShareProposalNotification extends Notification implements Serializable {
 
 	protected static final long serialVersionUID = -3210149693220010223L;
 
@@ -12,15 +11,19 @@ public class ShareProposalNotification extends Notification implements
 	protected Long parentItemId;
 	protected String ownerId;
 	protected String ownerName;
+	protected String swiftContainer;
+	protected String swiftURL;
 
-	public ShareProposalNotification(Long workspaceId, String folderName,
-			Long parentItemId, String ownerId, String ownerName) {
+	public ShareProposalNotification(Long workspaceId, String folderName, Long parentItemId, String ownerId,
+			String ownerName, String swiftContainer, String swiftURL) {
 		super();
 		this.workspaceId = workspaceId;
 		this.folderName = folderName;
 		this.parentItemId = parentItemId;
 		this.ownerId = ownerId;
 		this.ownerName = ownerName;
+		this.swiftContainer = swiftContainer;
+		this.swiftURL = swiftURL;
 	}
 
 	public Long getWorkspaceId() {
@@ -45,6 +48,22 @@ public class ShareProposalNotification extends Notification implements
 
 	public void setParentItemId(Long parentItemId) {
 		this.parentItemId = parentItemId;
+	}
+
+	public String getSwiftContainer() {
+		return swiftContainer;
+	}
+
+	public void setSwiftContainer(String swiftContainer) {
+		this.swiftContainer = swiftContainer;
+	}
+
+	public String getSwiftURL() {
+		return swiftURL;
+	}
+
+	public void setSwiftURL(String swiftURL) {
+		this.swiftURL = swiftURL;
 	}
 
 	public String getOwnerId() {
