@@ -2,11 +2,14 @@ package com.stacksync.commons.omq;
 
 import java.util.List;
 
+import com.stacksync.commons.models.AccountInfo;
 import com.stacksync.commons.models.ItemMetadata;
 import com.stacksync.commons.models.Workspace;
+import com.stacksync.commons.notifications.ShareProposalNotification;
 import com.stacksync.commons.requests.CommitRequest;
 import com.stacksync.commons.requests.GetChangesRequest;
 import com.stacksync.commons.requests.GetWorkspacesRequest;
+import com.stacksync.commons.requests.GetAccountRequest;
 import com.stacksync.commons.requests.ShareProposalRequest;
 import com.stacksync.commons.requests.UpdateDeviceRequest;
 import com.stacksync.commons.requests.UpdateWorkspaceRequest;
@@ -99,5 +102,14 @@ public interface ISyncService extends Remote {
 	 * @return The workspace ID corresponding to the shared folder.
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public Long createShareProposal(ShareProposalRequest request) throws ShareProposalNotCreatedException, UserNotFoundException;
+	public ShareProposalNotification createShareProposal(ShareProposalRequest request) throws ShareProposalNotCreatedException, UserNotFoundException;
+	
+	/***
+	 * Function used to obtain information about an Account
+	 * @param GetAccountRequest
+	 * 		Information needed to identify the account
+	 * @throws UserNotFoundException 
+	 */
+	@SyncMethod(retry = 3, timeout = 5000)
+	public AccountInfo getAccountInfo(GetAccountRequest request) throws UserNotFoundException;
 }
