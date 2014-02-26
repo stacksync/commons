@@ -15,7 +15,7 @@ public class Workspace implements Serializable {
 	private Integer latestRevision;
 	private User owner;
 	private String swiftContainer;
-	private String swiftURL;
+	private String swiftUrl;
 	private Boolean isShared;
 	private List<Item> items;
 	private List<User> users;
@@ -84,13 +84,13 @@ public class Workspace implements Serializable {
 	public void setSwiftContainer(String swiftContainer) {
 		this.swiftContainer = swiftContainer;
 	}
-
-	public String getSwiftURL() {
-		return swiftURL;
+	
+	public String getSwiftUrl() {
+		return swiftUrl;
 	}
 
-	public void setSwiftURL(String swiftURL) {
-		this.swiftURL = swiftURL;
+	public void setSwiftUrl(String swiftUrl) {
+		this.swiftUrl = swiftUrl;
 	}
 
 	public Item getParentItem() {
