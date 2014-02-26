@@ -1,6 +1,7 @@
 package com.stacksync.commons.omq;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.stacksync.commons.models.AccountInfo;
 import com.stacksync.commons.models.ItemMetadata;
@@ -80,7 +81,7 @@ public interface ISyncService extends Remote {
 	 * @throws UserNotFoundException 
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public String updateDevice(UpdateDeviceRequest request) throws UserNotFoundException, DeviceNotValidException, DeviceNotUpdatedException;
+	public UUID updateDevice(UpdateDeviceRequest request) throws UserNotFoundException, DeviceNotValidException, DeviceNotUpdatedException;
 	
 	/***
 	 * Function used to update information about a workspace.

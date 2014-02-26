@@ -2,6 +2,7 @@ package com.stacksync.commons.models;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import com.stacksync.commons.models.ItemMetadata;
 
@@ -147,7 +148,7 @@ public class ItemVersion {
 			chunksSize = chunks.size();
 		}
 
-		String deviceId = null;
+		UUID deviceId = null;
 		if (device != null) {
 			deviceId = device.getId();
 		}

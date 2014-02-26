@@ -2,6 +2,7 @@ package com.stacksync.commons.requests;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 import com.stacksync.commons.models.ItemMetadata;
 
@@ -10,10 +11,10 @@ public class CommitRequest extends Request implements Serializable {
 	protected static final long serialVersionUID = 3150919522585945457L;
 
 	protected String workspaceId;
-	protected String deviceId;
+	protected UUID deviceId;
 	protected List<ItemMetadata> items;
 	
-	public CommitRequest(String userId, String workspaceId, String deviceId, List<ItemMetadata> items) {
+	public CommitRequest(String userId, String workspaceId, UUID deviceId, List<ItemMetadata> items) {
 		super(userId);
 		this.workspaceId = workspaceId;
 		this.deviceId = deviceId;
@@ -28,11 +29,11 @@ public class CommitRequest extends Request implements Serializable {
 		this.workspaceId = workspaceId;
 	}
 
-	public String getDeviceId() {
+	public UUID getDeviceId() {
 		return deviceId;
 	}
 
-	public void setDeviceId(String deviceId) {
+	public void setDeviceId(UUID deviceId) {
 		this.deviceId = deviceId;
 	}
 

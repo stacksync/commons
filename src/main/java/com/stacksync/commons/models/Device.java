@@ -3,12 +3,13 @@ package com.stacksync.commons.models;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Date;
+import java.util.UUID;
 
 public class Device implements Serializable {
 
 	private static final long serialVersionUID = -2932481953197148130L;
 	
-	private String id;
+	private UUID id;
 	private String name;
 	private User user;
 	private String os;
@@ -21,11 +22,11 @@ public class Device implements Serializable {
 		this.id = null;
 	}
 	
-	public Device(String id) {
+	public Device(UUID id) {
 		this.id = id;
 	}
 
-	public Device(String id, String name, User user) {
+	public Device(UUID id, String name, User user) {
 		this.id = id;
 		this.name = name;
 		this.user = user;
@@ -82,11 +83,11 @@ public class Device implements Serializable {
 		this.appVersion = appVersion;
 	}
 
-	public String getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class ItemMetadata implements Serializable {
 
@@ -12,7 +13,7 @@ public class ItemMetadata implements Serializable {
 	private Long id;
 	private Long tempId;
 	private Long version;
-	private String deviceId;
+	private UUID deviceId;
 	private Long parentId;
 	private Long parentVersion;
 
@@ -34,7 +35,7 @@ public class ItemMetadata implements Serializable {
 		this.chunks = new ArrayList<String>();
 	}
 
-	public ItemMetadata(Long id, Long version, String deviceId, Long parentId,
+	public ItemMetadata(Long id, Long version, UUID deviceId, Long parentId,
 			Long parentVersion, String status, Date modifiedAt, Long checksum,
 			Long size, boolean isFolder, String filename, String mimetype,
 			List<String> chunks) {
@@ -84,11 +85,11 @@ public class ItemMetadata implements Serializable {
 		this.version = version;
 	}
 
-	public String getDeviceId() {
+	public UUID getDeviceId() {
 		return deviceId;
 	}
 
-	public void setDeviceId(String deviceId) {
+	public void setDeviceId(UUID deviceId) {
 		this.deviceId = deviceId;
 	}
 

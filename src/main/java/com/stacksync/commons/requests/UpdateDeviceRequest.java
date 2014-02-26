@@ -1,18 +1,19 @@
 package com.stacksync.commons.requests;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class UpdateDeviceRequest extends Request implements Serializable {
 
 	protected static final long serialVersionUID = 3763327030154389990L;
 	
-	protected String deviceId;
+	protected UUID deviceId;
 	protected String deviceName;
 	protected String os;
 	protected String ip;
 	protected String appVersion;
 
-	public UpdateDeviceRequest(String userId, String deviceId, String deviceName, String os, String ip, String appVersion) {
+	public UpdateDeviceRequest(String userId, UUID deviceId, String deviceName, String os, String ip, String appVersion) {
 		super(userId);
 		
 		this.deviceId = deviceId;
@@ -46,11 +47,11 @@ public class UpdateDeviceRequest extends Request implements Serializable {
 		this.appVersion = appVersion;
 	}
 
-	public String getDeviceId() {
+	public UUID getDeviceId() {
 		return deviceId;
 	}
 
-	public void setDeviceId(String deviceId) {
+	public void setDeviceId(UUID deviceId) {
 		this.deviceId = deviceId;
 	}
 
