@@ -80,7 +80,7 @@ public interface ISyncService extends Remote {
 	 * @throws UserNotFoundException 
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public Long updateDevice(UpdateDeviceRequest request) throws UserNotFoundException, DeviceNotValidException, DeviceNotUpdatedException;
+	public String updateDevice(UpdateDeviceRequest request) throws UserNotFoundException, DeviceNotValidException, DeviceNotUpdatedException;
 	
 	/***
 	 * Function used to update information about a workspace.

@@ -6,13 +6,13 @@ public class UpdateDeviceRequest extends Request implements Serializable {
 
 	protected static final long serialVersionUID = 3763327030154389990L;
 	
-	protected Long deviceId;
+	protected String deviceId;
 	protected String deviceName;
 	protected String os;
 	protected String ip;
 	protected String appVersion;
 
-	public UpdateDeviceRequest(String userId, Long deviceId, String deviceName, String os, String ip, String appVersion) {
+	public UpdateDeviceRequest(String userId, String deviceId, String deviceName, String os, String ip, String appVersion) {
 		super(userId);
 		
 		this.deviceId = deviceId;
@@ -46,11 +46,11 @@ public class UpdateDeviceRequest extends Request implements Serializable {
 		this.appVersion = appVersion;
 	}
 
-	public Long getDeviceId() {
+	public String getDeviceId() {
 		return deviceId;
 	}
 
-	public void setDeviceId(Long deviceId) {
+	public void setDeviceId(String deviceId) {
 		this.deviceId = deviceId;
 	}
 

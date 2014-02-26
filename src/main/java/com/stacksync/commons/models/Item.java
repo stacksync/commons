@@ -159,7 +159,7 @@ public class Item {
 			parentId = parent.getId();
 		}
 
-		Long workspaceId = null;
+		String workspaceId = null;
 		if (workspace != null) {
 			workspaceId = workspace.getId();
 		}

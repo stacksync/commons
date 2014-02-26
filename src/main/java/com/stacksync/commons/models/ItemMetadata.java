@@ -12,7 +12,7 @@ public class ItemMetadata implements Serializable {
 	private Long id;
 	private Long tempId;
 	private Long version;
-	private Long deviceId;
+	private String deviceId;
 	private Long parentId;
 	private Long parentVersion;
 
@@ -34,7 +34,7 @@ public class ItemMetadata implements Serializable {
 		this.chunks = new ArrayList<String>();
 	}
 
-	public ItemMetadata(Long id, Long version, Long deviceId, Long parentId,
+	public ItemMetadata(Long id, Long version, String deviceId, Long parentId,
 			Long parentVersion, String status, Date modifiedAt, Long checksum,
 			Long size, boolean isFolder, String filename, String mimetype,
 			List<String> chunks) {
@@ -84,11 +84,11 @@ public class ItemMetadata implements Serializable {
 		this.version = version;
 	}
 
-	public Long getDeviceId() {
+	public String getDeviceId() {
 		return deviceId;
 	}
 
-	public void setDeviceId(Long deviceId) {
+	public void setDeviceId(String deviceId) {
 		this.deviceId = deviceId;
 	}
 

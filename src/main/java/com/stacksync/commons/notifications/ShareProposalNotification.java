@@ -6,7 +6,7 @@ public class ShareProposalNotification extends Notification implements Serializa
 
 	protected static final long serialVersionUID = -3210149693220010223L;
 
-	protected Long workspaceId;
+	protected String workspaceId;
 	protected String folderName;
 	protected Long parentItemId;
 	protected String ownerId;
@@ -14,7 +14,7 @@ public class ShareProposalNotification extends Notification implements Serializa
 	protected String swiftContainer;
 	protected String swiftURL;
 
-	public ShareProposalNotification(Long workspaceId, String folderName, Long parentItemId, String ownerId,
+	public ShareProposalNotification(String workspaceId, String folderName, Long parentItemId, String ownerId,
 			String ownerName, String swiftContainer, String swiftURL) {
 		super();
 		this.workspaceId = workspaceId;
@@ -26,11 +26,11 @@ public class ShareProposalNotification extends Notification implements Serializa
 		this.swiftURL = swiftURL;
 	}
 
-	public Long getWorkspaceId() {
+	public String getWorkspaceId() {
 		return workspaceId;
 	}
 
-	public void setWorkspaceId(Long workspaceId) {
+	public void setWorkspaceId(String workspaceId) {
 		this.workspaceId = workspaceId;
 	}
 

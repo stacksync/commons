@@ -8,7 +8,7 @@ public class User implements Serializable{
 
 	private static final long serialVersionUID = -8827608629982195900L;
 
-	private Long id;
+	private String id;
 	private String name;
 	private String cloudId;
 	private String email;
@@ -21,11 +21,11 @@ public class User implements Serializable{
 		this(null);
 	}
 
-	public User(Long id) {
+	public User(String id) {
 		this(id, null, null, null, null, null);
 	}
 
-	public User(Long id, String name, String cloudId, String email, Integer quotaLimit, Integer quotaUsed) {
+	public User(String id, String name, String cloudId, String email, Integer quotaLimit, Integer quotaUsed) {
 		this.id = id;
 		this.name = name;
 		this.cloudId = cloudId;
@@ -36,11 +36,11 @@ public class User implements Serializable{
 		this.workspaces = new ArrayList<Workspace>();
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

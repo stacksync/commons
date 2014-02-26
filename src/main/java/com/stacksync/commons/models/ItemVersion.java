@@ -147,7 +147,7 @@ public class ItemVersion {
 			chunksSize = chunks.size();
 		}
 
-		Long deviceId = null;
+		String deviceId = null;
 		if (device != null) {
 			deviceId = device.getId();
 		}

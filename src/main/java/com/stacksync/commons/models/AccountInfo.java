@@ -6,7 +6,7 @@ public class AccountInfo implements Serializable{
 
 	private static final long serialVersionUID = 5231686716350716264L;
 	
-	private Long userId;
+	private String userId;
 	private String name;
 	private String email;
 	private Integer quotaLimit;
@@ -15,7 +15,7 @@ public class AccountInfo implements Serializable{
 	private String swiftUser;
 	private String swiftAuthUrl;
 	
-	public AccountInfo(Long userId, String name, String email, Integer quotaLimit, Integer quotaUsed, String swiftTenant,
+	public AccountInfo(String userId, String name, String email, Integer quotaLimit, Integer quotaUsed, String swiftTenant,
 			String swiftUser, String swiftAuthUrl) {
 		super();
 		this.userId = userId;
@@ -32,11 +32,11 @@ public class AccountInfo implements Serializable{
 		
 	}
 
-	public Long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

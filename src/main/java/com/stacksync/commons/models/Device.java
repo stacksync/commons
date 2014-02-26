@@ -8,7 +8,7 @@ public class Device implements Serializable {
 
 	private static final long serialVersionUID = -2932481953197148130L;
 	
-	private Long id;
+	private String id;
 	private String name;
 	private User user;
 	private String os;
@@ -21,11 +21,11 @@ public class Device implements Serializable {
 		this.id = null;
 	}
 	
-	public Device(Long id) {
+	public Device(String id) {
 		this.id = id;
 	}
 
-	public Device(Long id, String name, User user) {
+	public Device(String id, String name, User user) {
 		this.id = id;
 		this.name = name;
 		this.user = user;
@@ -82,11 +82,11 @@ public class Device implements Serializable {
 		this.appVersion = appVersion;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

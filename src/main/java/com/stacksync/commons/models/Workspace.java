@@ -8,7 +8,7 @@ public class Workspace implements Serializable {
 
 	private static final long serialVersionUID = 243350300638953723L;
 
-	private Long id;
+	private String id;
 	private String name;
 	private Item parentItem;
 	private Integer latestRevision;
@@ -23,11 +23,11 @@ public class Workspace implements Serializable {
 		this(null);
 	}
 
-	public Workspace(Long id) {
+	public Workspace(String id) {
 		this(id, 0, null, false);
 	}
 
-	public Workspace(Long id, Integer latestRevision, User owner, Boolean isShared) {
+	public Workspace(String id, Integer latestRevision, User owner, Boolean isShared) {
 		this.id = id;
 		this.latestRevision = latestRevision;
 		this.owner = owner;
@@ -36,11 +36,11 @@ public class Workspace implements Serializable {
 		this.users = new ArrayList<User>();
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

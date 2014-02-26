@@ -6,11 +6,11 @@ public class UpdateWorkspaceRequest extends Request implements Serializable{
 
 	protected static final long serialVersionUID = -1295960595014495726L;
 
-	protected Long workspaceId;
+	protected String workspaceId;
 	protected String workspaceName;
 	protected Long parentItemId;
 
-	public UpdateWorkspaceRequest(String userId, Long workspaceId, String workspaceName, Long parentItemId) {
+	public UpdateWorkspaceRequest(String userId, String workspaceId, String workspaceName, Long parentItemId) {
 		super(userId);
 		
 		this.workspaceId = workspaceId;
@@ -18,11 +18,11 @@ public class UpdateWorkspaceRequest extends Request implements Serializable{
 		this.parentItemId = parentItemId;
 	}
 
-	public Long getWorkspaceId() {
+	public String getWorkspaceId() {
 		return workspaceId;
 	}
 
-	public void setWorkspaceId(Long workspaceId) {
+	public void setWorkspaceId(String workspaceId) {
 		this.workspaceId = workspaceId;
 	}
 
