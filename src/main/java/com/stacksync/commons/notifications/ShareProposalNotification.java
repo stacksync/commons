@@ -1,20 +1,21 @@
 package com.stacksync.commons.notifications;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class ShareProposalNotification extends Notification implements Serializable {
 
 	protected static final long serialVersionUID = -3210149693220010223L;
 
-	protected String workspaceId;
+	protected UUID workspaceId;
 	protected String folderName;
 	protected Long parentItemId;
-	protected String ownerId;
+	protected UUID ownerId;
 	protected String ownerName;
 	protected String swiftContainer;
 	protected String swiftURL;
 
-	public ShareProposalNotification(String workspaceId, String folderName, Long parentItemId, String ownerId,
+	public ShareProposalNotification(UUID workspaceId, String folderName, Long parentItemId, UUID ownerId,
 			String ownerName, String swiftContainer, String swiftURL) {
 		super();
 		this.workspaceId = workspaceId;
@@ -26,11 +27,11 @@ public class ShareProposalNotification extends Notification implements Serializa
 		this.swiftURL = swiftURL;
 	}
 
-	public String getWorkspaceId() {
+	public UUID getWorkspaceId() {
 		return workspaceId;
 	}
 
-	public void setWorkspaceId(String workspaceId) {
+	public void setWorkspaceId(UUID workspaceId) {
 		this.workspaceId = workspaceId;
 	}
 
@@ -66,11 +67,11 @@ public class ShareProposalNotification extends Notification implements Serializa
 		this.swiftURL = swiftURL;
 	}
 
-	public String getOwnerId() {
+	public UUID getOwnerId() {
 		return ownerId;
 	}
 
-	public void setOwnerId(String ownerId) {
+	public void setOwnerId(UUID ownerId) {
 		this.ownerId = ownerId;
 	}
 

@@ -3,12 +3,13 @@ package com.stacksync.commons.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Workspace implements Serializable {
 
 	private static final long serialVersionUID = 243350300638953723L;
 
-	private String id;
+	private UUID id;
 	private String name;
 	private Item parentItem;
 	private Integer latestRevision;
@@ -23,11 +24,11 @@ public class Workspace implements Serializable {
 		this(null);
 	}
 
-	public Workspace(String id) {
+	public Workspace(UUID id) {
 		this(id, 0, null, false);
 	}
 
-	public Workspace(String id, Integer latestRevision, User owner, Boolean isShared) {
+	public Workspace(UUID id, Integer latestRevision, User owner, Boolean isShared) {
 		this.id = id;
 		this.latestRevision = latestRevision;
 		this.owner = owner;
@@ -36,11 +37,11 @@ public class Workspace implements Serializable {
 		this.users = new ArrayList<User>();
 	}
 
-	public String getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -150,7 +151,7 @@ public class Workspace implements Serializable {
 	@Override
 	public String toString() {
 		return String.format(
-				"workspace[id=%d, latestRevision=%s, owner=%s, items=%s, users=%s]", id,
+				"workspace[id=%s, latestRevision=%s, owner=%s, items=%s, users=%s]", id,
 				latestRevision, owner, items, users);
 	}
 }

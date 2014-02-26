@@ -10,22 +10,22 @@ public class CommitRequest extends Request implements Serializable {
 
 	protected static final long serialVersionUID = 3150919522585945457L;
 
-	protected String workspaceId;
+	protected UUID workspaceId;
 	protected UUID deviceId;
 	protected List<ItemMetadata> items;
 	
-	public CommitRequest(String userId, String workspaceId, UUID deviceId, List<ItemMetadata> items) {
+	public CommitRequest(UUID userId, UUID workspaceId, UUID deviceId, List<ItemMetadata> items) {
 		super(userId);
 		this.workspaceId = workspaceId;
 		this.deviceId = deviceId;
 		this.items = items;
 	}
 
-	public String getWorkspaceId() {
+	public UUID getWorkspaceId() {
 		return workspaceId;
 	}
 
-	public void setWorkspaceId(String workspaceId) {
+	public void setWorkspaceId(UUID workspaceId) {
 		this.workspaceId = workspaceId;
 	}
 

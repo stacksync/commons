@@ -13,7 +13,7 @@ public class UpdateDeviceRequest extends Request implements Serializable {
 	protected String ip;
 	protected String appVersion;
 
-	public UpdateDeviceRequest(String userId, UUID deviceId, String deviceName, String os, String ip, String appVersion) {
+	public UpdateDeviceRequest(UUID userId, UUID deviceId, String deviceName, String os, String ip, String appVersion) {
 		super(userId);
 		
 		this.deviceId = deviceId;

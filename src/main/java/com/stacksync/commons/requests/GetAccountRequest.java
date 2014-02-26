@@ -9,7 +9,7 @@ public class GetAccountRequest extends Request implements Serializable {
 	protected String email;
 
 	public GetAccountRequest(String email) {
-		super("");
+		super(null);
 		this.email = email;
 	}
 

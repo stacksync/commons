@@ -9,14 +9,14 @@ public class Request implements Serializable{
 	private static final long serialVersionUID = -8509073150924914903L;
 	
 	private String requestId;
-	private String userId;
+	private UUID userId;
 	
-	public Request(String userId){
+	public Request(UUID userId){
 		this.requestId = UUID.randomUUID().toString();
 		this.userId = userId;
 	}
 	
-	public Request(String requestId, String userId){
+	public Request(String requestId, UUID userId){
 		this.requestId = requestId;
 		this.userId = userId;
 	}
@@ -29,11 +29,11 @@ public class Request implements Serializable{
 		this.requestId = requestId;
 	}
 
-	public String getUserId() {
+	public UUID getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(UUID userId) {
 		this.userId = userId;
 	}
 	

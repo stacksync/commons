@@ -1,12 +1,13 @@
 package com.stacksync.commons.models;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class AccountInfo implements Serializable{
 
 	private static final long serialVersionUID = 5231686716350716264L;
 	
-	private String userId;
+	private UUID userId;
 	private String name;
 	private String email;
 	private Integer quotaLimit;
@@ -15,7 +16,7 @@ public class AccountInfo implements Serializable{
 	private String swiftUser;
 	private String swiftAuthUrl;
 	
-	public AccountInfo(String userId, String name, String email, Integer quotaLimit, Integer quotaUsed, String swiftTenant,
+	public AccountInfo(UUID userId, String name, String email, Integer quotaLimit, Integer quotaUsed, String swiftTenant,
 			String swiftUser, String swiftAuthUrl) {
 		super();
 		this.userId = userId;
@@ -32,11 +33,11 @@ public class AccountInfo implements Serializable{
 		
 	}
 
-	public String getUserId() {
+	public UUID getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(UUID userId) {
 		this.userId = userId;
 	}
 

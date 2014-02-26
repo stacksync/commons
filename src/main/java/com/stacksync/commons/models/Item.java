@@ -2,6 +2,7 @@ package com.stacksync.commons.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Item {
 
@@ -159,7 +160,7 @@ public class Item {
 			parentId = parent.getId();
 		}
 
-		String workspaceId = null;
+		UUID workspaceId = null;
 		if (workspace != null) {
 			workspaceId = workspace.getId();
 		}

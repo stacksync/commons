@@ -2,6 +2,7 @@ package com.stacksync.commons.requests;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 public class ShareProposalRequest extends Request implements Serializable {
 
@@ -12,7 +13,7 @@ public class ShareProposalRequest extends Request implements Serializable {
 	protected String swiftContainer;
 	protected String swiftURL;
 
-	public ShareProposalRequest(String userId, List<String> emails,
+	public ShareProposalRequest(UUID userId, List<String> emails,
 			String folderName, String swiftContainer, String swiftURL) {
 		super(userId);
 		

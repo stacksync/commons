@@ -1,16 +1,17 @@
 package com.stacksync.commons.requests;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class UpdateWorkspaceRequest extends Request implements Serializable{
 
 	protected static final long serialVersionUID = -1295960595014495726L;
 
-	protected String workspaceId;
+	protected UUID workspaceId;
 	protected String workspaceName;
 	protected Long parentItemId;
 
-	public UpdateWorkspaceRequest(String userId, String workspaceId, String workspaceName, Long parentItemId) {
+	public UpdateWorkspaceRequest(UUID userId, UUID workspaceId, String workspaceName, Long parentItemId) {
 		super(userId);
 		
 		this.workspaceId = workspaceId;
@@ -18,11 +19,11 @@ public class UpdateWorkspaceRequest extends Request implements Serializable{
 		this.parentItemId = parentItemId;
 	}
 
-	public String getWorkspaceId() {
+	public UUID getWorkspaceId() {
 		return workspaceId;
 	}
 
-	public void setWorkspaceId(String workspaceId) {
+	public void setWorkspaceId(UUID workspaceId) {
 		this.workspaceId = workspaceId;
 	}
 

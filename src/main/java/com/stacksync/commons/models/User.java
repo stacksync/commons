@@ -3,14 +3,16 @@ package com.stacksync.commons.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class User implements Serializable{
 
 	private static final long serialVersionUID = -8827608629982195900L;
 
-	private String id;
+	private UUID id;
 	private String name;
-	private String cloudId;
+	private String swiftUser;
+	private String swiftAccount;
 	private String email;
 	private Integer quotaLimit;
 	private Integer quotaUsed;
@@ -21,14 +23,15 @@ public class User implements Serializable{
 		this(null);
 	}
 
-	public User(String id) {
-		this(id, null, null, null, null, null);
+	public User(UUID id) {
+		this(id, null, null, null, null, null, null);
 	}
 
-	public User(String id, String name, String cloudId, String email, Integer quotaLimit, Integer quotaUsed) {
+	public User(UUID id, String name, String swiftUser, String swiftAccount, String email, Integer quotaLimit, Integer quotaUsed) {
 		this.id = id;
 		this.name = name;
-		this.cloudId = cloudId;
+		this.swiftUser = swiftUser;
+		this.swiftAccount = swiftAccount;
 		this.email = email;
 		this.quotaLimit = quotaLimit;
 		this.quotaUsed = quotaUsed;
@@ -36,11 +39,11 @@ public class User implements Serializable{
 		this.workspaces = new ArrayList<Workspace>();
 	}
 
-	public String getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -52,12 +55,20 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
-	public String getCloudId() {
-		return cloudId;
+	public String getSwiftUser() {
+		return swiftUser;
 	}
 
-	public void setCloudId(String cloudId) {
-		this.cloudId = cloudId;
+	public void setSwiftUser(String swiftUser) {
+		this.swiftUser = swiftUser;
+	}
+	
+	public String getSwiftAccount() {
+		return swiftAccount;
+	}
+
+	public void setSwiftAccount (String swiftAccount) {
+		this.swiftAccount = swiftAccount;
 	}
 
 	public String getEmail() {
@@ -126,8 +137,8 @@ public class User implements Serializable{
 			if (((user.getId() == null) && (this.getId() == null))
 					|| user.getId().equals(this.getId())
 					&& ((user.getName() == null) && (this.getName() == null) || user.getName().equals(this.getName()))
-					&& ((user.getCloudId() == null) && (this.getCloudId() == null) || user.getCloudId().equals(
-							this.getCloudId()))
+					&& ((user.getSwiftUser() == null) && (this.getSwiftUser() == null) || user.getSwiftUser().equals(
+							this.getSwiftUser()))
 					&& ((user.getEmail() == null) && (this.getEmail() == null) || user.getEmail().equals(
 							this.getEmail()))
 					&& ((user.getQuotaLimit() == null) && (this.getQuotaLimit() == null) || user.getQuotaLimit()
@@ -145,8 +156,8 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return String.format("User[id=%d, name=%s, cloudId=%s, email=%s, quotaLimit=%s, quotaUsed=%s]", id, name,
-				cloudId, email, quotaLimit, quotaUsed);
+		return String.format("User[id=%s, name=%s, swiftUser=%s, swiftAccount=%s, email=%s, quotaLimit=%s, quotaUsed=%s]", id, name,
+				swiftUser, swiftAccount, email, quotaLimit, quotaUsed);
 	}
 
 	/**
@@ -157,7 +168,7 @@ public class User implements Serializable{
 	 * @return Boolean True if the user is valid. False otherwise.
 	 */
 	public boolean isValid() {
-		if (this.cloudId == null || this.email == null || this.name == null || this.quotaLimit == null
+		if (this.swiftUser == null || this.email == null || this.name == null || this.quotaLimit == null
 				|| this.quotaUsed == null) {
 			return false;
 		} else {
