@@ -16,7 +16,7 @@ public class ShareProposalNotification extends Notification implements Serializa
 	protected String swiftURL;
 
 	public ShareProposalNotification(UUID workspaceId, String folderName, Long parentItemId, UUID ownerId,
-			String ownerName, String swiftContainer) {
+			String ownerName, String swiftContainer, String swiftUrl) {
 		super();
 		this.workspaceId = workspaceId;
 		this.folderName = folderName;
@@ -24,6 +24,7 @@ public class ShareProposalNotification extends Notification implements Serializa
 		this.ownerId = ownerId;
 		this.ownerName = ownerName;
 		this.swiftContainer = swiftContainer;
+		this.swiftURL = swiftUrl;
 	}
 
 	public UUID getWorkspaceId() {
