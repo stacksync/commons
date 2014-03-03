@@ -6,7 +6,6 @@ import java.util.UUID;
 import com.stacksync.commons.models.AccountInfo;
 import com.stacksync.commons.models.ItemMetadata;
 import com.stacksync.commons.models.Workspace;
-import com.stacksync.commons.notifications.ShareProposalNotification;
 import com.stacksync.commons.requests.CommitRequest;
 import com.stacksync.commons.requests.GetChangesRequest;
 import com.stacksync.commons.requests.GetWorkspacesRequest;
@@ -100,10 +99,9 @@ public interface ISyncService extends Remote {
 	 * 
 	 * @param ShareProposalRequest
 	 * 			  Information needed to create the sharing proposal
-	 * @return The workspace ID corresponding to the shared folder.
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public ShareProposalNotification createShareProposal(ShareProposalRequest request) throws ShareProposalNotCreatedException, UserNotFoundException;
+	public void createShareProposal(ShareProposalRequest request) throws ShareProposalNotCreatedException, UserNotFoundException;
 	
 	/***
 	 * Function used to obtain information about an Account
