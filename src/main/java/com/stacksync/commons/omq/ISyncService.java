@@ -87,12 +87,11 @@ public interface ISyncService extends Remote {
 	 * 
 	 * @param UpdateDeviceRequest
 	 *            The device information to be updated 
-	 * @return A boolean representing whether the workspace successfully updated or not
 	 * @throws WorkspaceNotUpdatedException 
 	 * @throws UserNotFoundException 
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public Boolean updateWorkspace(UpdateWorkspaceRequest request) throws UserNotFoundException, WorkspaceNotUpdatedException;
+	public void updateWorkspace(UpdateWorkspaceRequest request) throws UserNotFoundException, WorkspaceNotUpdatedException;
 	
 	/***
 	 * Function used to create a share proposal through the desktop client.
