@@ -1,11 +1,14 @@
 package com.stacksync.commons.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Item {
+public class Item implements Serializable {
 
+	private static final long serialVersionUID = 1482457936400001556L;
+	
 	private Long id;
 	private Workspace workspace;
 	private Long latestVersion;
