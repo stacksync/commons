@@ -71,6 +71,10 @@ public class Workspace implements Serializable {
 		return isEncrypted;
 	}
 	
+	public void setEncrypted(boolean isEncrypted){
+		this.isEncrypted = isEncrypted;
+	}
+	
 	public void setShared(Boolean isShared) {
 		this.isShared =isShared;
 	}
