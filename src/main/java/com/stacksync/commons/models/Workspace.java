@@ -16,7 +16,8 @@ public class Workspace implements Serializable {
 	private User owner;
 	private String swiftContainer;
 	private String swiftUrl;
-	private Boolean isShared;
+	private boolean isShared;
+	private boolean isEncrypted;
 	private List<Item> items;
 	private List<User> users;
 
@@ -25,14 +26,15 @@ public class Workspace implements Serializable {
 	}
 
 	public Workspace(UUID id) {
-		this(id, 0, null, false);
+		this(id, 0, null, false, false);
 	}
 
-	public Workspace(UUID id, Integer latestRevision, User owner, Boolean isShared) {
+	public Workspace(UUID id, Integer latestRevision, User owner, boolean isShared, boolean isEncrypted ) {
 		this.id = id;
 		this.latestRevision = latestRevision;
 		this.owner = owner;
 		this.isShared = isShared;
+		this.isEncrypted = isEncrypted;
 		this.items = new ArrayList<Item>();
 		this.users = new ArrayList<User>();
 	}
@@ -61,10 +63,14 @@ public class Workspace implements Serializable {
 		this.owner = owner;
 	}
 	
-	public Boolean isShared() {
+	public boolean isShared() {
 		return isShared;
 	}
 
+	public boolean isEncrypted() {
+		return isEncrypted;
+	}
+	
 	public void setShared(Boolean isShared) {
 		this.isShared =isShared;
 	}
