@@ -14,6 +14,7 @@ public class ItemMetadata implements Serializable {
 	private Long tempId;
 	private Long version;
 	private UUID deviceId;
+	private UUID workspaceId;
 	private Long parentId;
 	private Long parentVersion;
 
@@ -91,6 +92,14 @@ public class ItemMetadata implements Serializable {
 
 	public void setDeviceId(UUID deviceId) {
 		this.deviceId = deviceId;
+	}
+	
+	public UUID getWorkspaceId() {
+		return workspaceId;
+	}
+
+	public void setWorkspaceId(UUID workspaceId) {
+		this.workspaceId = workspaceId;
 	}
 
 	public Long getParentId() {

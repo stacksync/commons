@@ -10,15 +10,15 @@ public class ShareProposalRequest extends Request implements Serializable {
 
 	protected List<String> emails;
 	protected String folderName;
-	protected String swiftContainer;
-	protected String swiftURL;
+	protected boolean isEncrypted;
 
 	public ShareProposalRequest(UUID userId, List<String> emails,
-			String folderName) {
+			String folderName, boolean isEncrypted) {
 		super(userId);
 		
 		this.emails = emails;
 		this.folderName = folderName;
+		this.isEncrypted = isEncrypted;
 	}
 
 	public List<String> getEmails() {
@@ -36,5 +36,15 @@ public class ShareProposalRequest extends Request implements Serializable {
 	public void setFolderName(String folderName) {
 		this.folderName = folderName;
 	}
+
+	public boolean isEncrypted() {
+		return isEncrypted;
+	}
+
+	public void setEncrypted(boolean isEncrypted) {
+		this.isEncrypted = isEncrypted;
+	}
+	
+	
 
 }
