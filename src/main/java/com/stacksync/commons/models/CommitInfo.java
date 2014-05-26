@@ -5,12 +5,12 @@ import java.io.Serializable;
 
 public class CommitInfo implements Serializable {
 
-	private static final long serialVersionUID = -1205107021066864317L;
-	private long committedVersion;
+	private static final long serialVersionUID = -1205107021066864318L;
+	private Long committedVersion;
 	private boolean commitSucceed;
 	private ItemMetadata metadata;
 
-	public CommitInfo(long committedVersion, boolean commitSucceed,
+	public CommitInfo(Long committedVersion, boolean commitSucceed,
 			ItemMetadata metadata) {
 
 		this.committedVersion = committedVersion;
@@ -23,7 +23,7 @@ public class CommitInfo implements Serializable {
 		return committedVersion;
 	}
 
-	public void setCommittedVersion(long committedVersion) {
+	public void setCommittedVersion(Long committedVersion) {
 		this.committedVersion = committedVersion;
 	}
 
