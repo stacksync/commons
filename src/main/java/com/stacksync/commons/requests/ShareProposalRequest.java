@@ -6,18 +6,18 @@ import java.util.UUID;
 
 public class ShareProposalRequest extends Request implements Serializable {
 
-	protected static final long serialVersionUID = -5985754297818659222L;
+	protected static final long serialVersionUID = -5985754297818659212L;
 
 	protected List<String> emails;
-	protected String folderName;
+	protected Long itemId;
 	protected boolean isEncrypted;
 
 	public ShareProposalRequest(UUID userId, List<String> emails,
-			String folderName, boolean isEncrypted) {
+			Long itemId, boolean isEncrypted) {
 		super(userId);
 		
 		this.emails = emails;
-		this.folderName = folderName;
+		this.itemId = itemId;
 		this.isEncrypted = isEncrypted;
 	}
 
@@ -29,12 +29,12 @@ public class ShareProposalRequest extends Request implements Serializable {
 		this.emails = emails;
 	}
 
-	public String getFolderName() {
-		return folderName;
+	public Long getItemId() {
+		return itemId;
 	}
 
-	public void setFolderName(String folderName) {
-		this.folderName = folderName;
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
 	}
 
 	public boolean isEncrypted() {

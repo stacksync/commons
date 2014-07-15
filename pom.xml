@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.stacksync</groupId>
 	<artifactId>stacksync-commons</artifactId>
-	<version>1.3.9</version>
+	<version>1.4.0</version>
 	<name>Stacksync Commons</name>
 	<description>Common classes shared between the server and client.</description>
 
@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>objectmq</groupId>
 			<artifactId>objectmq</artifactId>
-			<version>LATEST</version>
+			<version>0.5.7</version>
 		</dependency>
 	</dependencies>
 	<build>

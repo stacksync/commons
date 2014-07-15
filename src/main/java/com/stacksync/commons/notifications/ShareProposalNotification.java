@@ -9,19 +9,19 @@ public class ShareProposalNotification extends Notification implements Serializa
 
 	protected UUID workspaceId;
 	protected String folderName;
-	protected Long parentItemId;
+	protected Long itemId;
 	protected UUID ownerId;
 	protected String ownerName;
 	protected String swiftContainer;
 	protected String swiftURL;
 	protected boolean isEncrypted;
 
-	public ShareProposalNotification(UUID workspaceId, String folderName, Long parentItemId, UUID ownerId,
+	public ShareProposalNotification(UUID workspaceId, String folderName, Long itemId, UUID ownerId,
 			String ownerName, String swiftContainer, String swiftUrl, boolean isEncrypted) {
 		super();
 		this.workspaceId = workspaceId;
 		this.folderName = folderName;
-		this.parentItemId = parentItemId;
+		this.itemId = itemId;
 		this.ownerId = ownerId;
 		this.ownerName = ownerName;
 		this.swiftContainer = swiftContainer;
@@ -45,12 +45,12 @@ public class ShareProposalNotification extends Notification implements Serializa
 		this.folderName = folderName;
 	}
 
-	public Long getParentItemId() {
-		return parentItemId;
+	public Long getItemId() {
+		return itemId;
 	}
 
-	public void setParentItemId(Long parentItemId) {
-		this.parentItemId = parentItemId;
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
 	}
 
 	public String getSwiftContainer() {
