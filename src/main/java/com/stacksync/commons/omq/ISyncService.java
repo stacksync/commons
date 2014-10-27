@@ -99,7 +99,7 @@ public interface ISyncService extends Remote {
 	 * @param ShareProposalRequest
 	 * 			  Information needed to create the sharing proposal
 	 */
-	@SyncMethod(retry = 3, timeout = 5000)
+	@AsyncMethod
 	public void createShareProposal(ShareProposalRequest request) throws ShareProposalNotCreatedException, UserNotFoundException;
 	
 	/***

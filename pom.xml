@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.stacksync</groupId>
 	<artifactId>stacksync-commons</artifactId>
-	<version>1.4.0</version>
+	<version>1.4.1</version>
 	<name>Stacksync Commons</name>
 	<description>Common classes shared between the server and client.</description>
 
