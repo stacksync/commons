@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-import com.stacksync.commons.models.ItemMetadata;
+import com.stacksync.commons.models.SyncMetadata;
 
 public class CommitRequest extends Request implements Serializable {
 
@@ -12,9 +12,9 @@ public class CommitRequest extends Request implements Serializable {
 
 	protected UUID workspaceId;
 	protected UUID deviceId;
-	protected List<ItemMetadata> items;
+	protected List<SyncMetadata> items;
 	
-	public CommitRequest(UUID userId, UUID workspaceId, UUID deviceId, List<ItemMetadata> items) {
+	public CommitRequest(UUID userId, UUID workspaceId, UUID deviceId, List<SyncMetadata> items) {
 		super(userId);
 		this.workspaceId = workspaceId;
 		this.deviceId = deviceId;
@@ -37,11 +37,11 @@ public class CommitRequest extends Request implements Serializable {
 		this.deviceId = deviceId;
 	}
 
-	public List<ItemMetadata> getItems() {
+	public List<SyncMetadata> getItems() {
 		return items;
 	}
 
-	public void setItems(List<ItemMetadata> items) {
+	public void setItems(List<SyncMetadata> items) {
 		this.items = items;
 	}
 

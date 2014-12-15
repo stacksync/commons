@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class ABEMetaComponent implements Serializable {
     
     private Long id;
-    private Attribute attribute;
+    private String attributeId;
     private String encryptedPKComponent;
     private Long version;
 
@@ -17,9 +17,9 @@ public class ABEMetaComponent implements Serializable {
         this.id = null;
     }
     
-    public ABEMetaComponent(Long id, Attribute attribute, String encryptedPKComponent, Long version) {
+    public ABEMetaComponent(Long id, String attribute, String encryptedPKComponent, Long version) {
         this.id = id;
-        this.attribute = attribute;
+        this.attributeId = attribute;
         this.encryptedPKComponent = encryptedPKComponent;
         this.version = version;
     }
@@ -32,12 +32,12 @@ public class ABEMetaComponent implements Serializable {
         this.id = id;
     }
 
-    public Attribute getAttribute() {
-        return attribute;
+    public String getAttributeId() {
+        return attributeId;
     }
 
-    public void setAttribute(Attribute attribute) {
-        this.attribute = attribute;
+    public void setAttributeId(String attributeId) {
+        this.attributeId = attributeId;
     }
 
     public String getEncryptedPKComponent() {
@@ -58,10 +58,18 @@ public class ABEMetaComponent implements Serializable {
     
     public boolean isValid() {
         boolean valid = true;
-        if (this.attribute == null || this.encryptedPKComponent == null || this.version == null) {
+        if (this.attributeId == null || this.encryptedPKComponent == null || this.version == null) {
             valid = false;
         }
         return valid;
     }
     
+	@Override
+	public String toString() {
+
+		String format = "ItemMetadata: {id=%s, attribute=%s, pk component=%s}";
+		String result = String.format(format, id, attributeId, encryptedPKComponent);
+
+		return result;
+	}
 }

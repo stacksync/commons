@@ -1,5 +1,6 @@
 package com.stacksync.commons.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -12,16 +13,17 @@ public class ABEItemMetadata extends ItemMetadata {
 
     private List<ABEMetaComponent> abeComponents;
     private String cipherSymKey;
-    
+
     public ABEItemMetadata() {
         super();
+        this.abeComponents = new ArrayList<ABEMetaComponent>();
     }
 
-    public ABEItemMetadata(List<ABEMetaComponent> abeComponents, String cipherSymKey,
-            Long id, Long version, UUID deviceId, Long parentId, Long parentVersion, 
-            String status, Date modifiedAt, Long checksum, Long size, boolean isFolder,
-            String filename, String mimetype, List<String> chunks) {
-        
+    public ABEItemMetadata( Long id, Long version, UUID deviceId, Long parentId, 
+            Long parentVersion, String status, Date modifiedAt, Long checksum, Long size, 
+            boolean isFolder, String filename, String mimetype, List<String> chunks, 
+            List<ABEMetaComponent> abeComponents, String cipherSymKey) {
+
         super(id, version, deviceId, parentId, parentVersion, status, modifiedAt,
                 checksum, size, isFolder, filename, mimetype, chunks);
         this.abeComponents = abeComponents;
@@ -35,7 +37,15 @@ public class ABEItemMetadata extends ItemMetadata {
     public void setAbeComponents(List<ABEMetaComponent> abeComponents) {
         this.abeComponents = abeComponents;
     }
-
+    
+    public void addAbeComponent(ABEMetaComponent abeMetaComponent) {
+        this.abeComponents.add(abeMetaComponent);
+    }
+    
+    public void removeAbeComponent(ABEMetaComponent abeMetaComponent) {
+        this.abeComponents.remove(abeMetaComponent);
+    }
+    
     public String getCipherSymKey() {
         return cipherSymKey;
     }
@@ -44,4 +54,13 @@ public class ABEItemMetadata extends ItemMetadata {
         this.cipherSymKey = cipherSymKey;
     }
     
+	@Override
+	public String toString() {
+
+		String format = "ABEItemMetadata: {id=%s, filename=%s, cypher symmetric key=%s, abe components=%s}";
+		String result = String.format(format, id, filename, cipherSymKey, abeComponents);
+
+		return result;
+	}
+
 }

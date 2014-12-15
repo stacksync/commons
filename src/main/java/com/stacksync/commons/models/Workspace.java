@@ -18,6 +18,7 @@ public class Workspace implements Serializable {
 	private String swiftUrl;
 	private boolean isShared;
 	private boolean isEncrypted;
+        private boolean isAbeEncrypted;
 	private List<Item> items;
 	private List<User> users;
 
@@ -37,6 +38,7 @@ public class Workspace implements Serializable {
 		this.isEncrypted = isEncrypted;
 		this.items = new ArrayList<Item>();
 		this.users = new ArrayList<User>();
+                this.isAbeEncrypted = false;
 	}
 
 	public UUID getId() {
@@ -71,9 +73,18 @@ public class Workspace implements Serializable {
 		return isEncrypted;
 	}
 	
+        public boolean isAbeEncrypted() {
+		return isAbeEncrypted;
+	}
+        
 	public void setEncrypted(boolean isEncrypted){
 		this.isEncrypted = isEncrypted;
 	}
+        
+        public void setAbeEncrypted(boolean isAbeEncrypted) {
+		this.isAbeEncrypted = isAbeEncrypted;
+	}
+
 	
 	public void setShared(Boolean isShared) {
 		this.isShared =isShared;

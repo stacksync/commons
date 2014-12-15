@@ -19,6 +19,7 @@ import com.stacksync.commons.exceptions.NoWorkspacesFoundException;
 import com.stacksync.commons.exceptions.ShareProposalNotCreatedException;
 import com.stacksync.commons.exceptions.UserNotFoundException;
 import com.stacksync.commons.exceptions.WorkspaceNotUpdatedException;
+import com.stacksync.commons.models.SyncMetadata;
 
 import omq.Remote;
 import omq.client.annotation.AsyncMethod;
@@ -36,7 +37,7 @@ public interface ISyncService extends Remote {
 	 * @return A list of {@link ItemMetadata}
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
-	public List<ItemMetadata> getChanges(GetChangesRequest request);
+	public List<SyncMetadata> getChanges(GetChangesRequest request);
 
 	/***
 	 * Returns a list containing all workspaces for a given user.
