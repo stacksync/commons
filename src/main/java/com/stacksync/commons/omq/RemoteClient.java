@@ -1,6 +1,7 @@
 package com.stacksync.commons.omq;
 
 import com.stacksync.commons.notifications.ShareProposalNotification;
+import com.stacksync.commons.notifications.UnshareNotification;
 import com.stacksync.commons.notifications.UpdateWorkspaceNotification;
 
 import omq.Remote;
@@ -17,5 +18,11 @@ public interface RemoteClient extends Remote {
 	
 	@MultiMethod
 	@AsyncMethod
+	void notifyUnshare(UnshareNotification notification);
+	
+	@MultiMethod
+	@AsyncMethod
 	void notifyUpdateWorkspace(UpdateWorkspaceNotification notification);
+	
+	
 }
