@@ -11,14 +11,16 @@ public class ShareProposalRequest extends Request implements Serializable {
 	protected List<String> emails;
 	protected Long itemId;
 	protected boolean isEncrypted;
+        protected boolean abeEncrypted;
 
 	public ShareProposalRequest(UUID userId, List<String> emails,
-			Long itemId, boolean isEncrypted) {
+			Long itemId, boolean isEncrypted, boolean abeEncrypted) {
 		super(userId);
 		
 		this.emails = emails;
 		this.itemId = itemId;
 		this.isEncrypted = isEncrypted;
+                this.abeEncrypted = abeEncrypted;
 	}
 
 	public List<String> getEmails() {
@@ -44,7 +46,12 @@ public class ShareProposalRequest extends Request implements Serializable {
 	public void setEncrypted(boolean isEncrypted) {
 		this.isEncrypted = isEncrypted;
 	}
-	
-	
 
+        public boolean isAbeEncrypted() {
+            return abeEncrypted;
+        }
+
+        public void setAbeEncrypted(boolean abeEncrypted) {
+            this.abeEncrypted = abeEncrypted;
+        }
 }

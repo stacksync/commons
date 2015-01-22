@@ -11,13 +11,13 @@ public class Attribute implements Serializable {
     private Long id;
     private String name;
     private Long latestVersion;
-    private String publicKeyComponent;
+    private byte[] publicKeyComponent;
 
     public Attribute() {
         this.id = null;
     }
     
-    public Attribute(Long id, String name, Long latestVersion, String publicKeyComponent) {
+    public Attribute(Long id, String name, Long latestVersion, byte[] publicKeyComponent) {
         this.id = id;
         this.name = name;
         this.latestVersion = latestVersion;
@@ -48,11 +48,11 @@ public class Attribute implements Serializable {
         this.latestVersion = latestVersion;
     }
 
-    public String getPublicKeyComponent() {
+    public byte[] getPublicKeyComponent() {
         return publicKeyComponent;
     }
 
-    public void setPublicKeyComponent(String publicKeyComponent) {
+    public void setPublicKeyComponent(byte[] publicKeyComponent) {
         this.publicKeyComponent = publicKeyComponent;
     }
 

@@ -15,7 +15,7 @@ import java.util.List;
 public class ABEItem extends Item {
     
         private List<ABEMetaComponent> abeComponents;
-        private String cipherSymKey;
+        private byte[] cipherSymKey;
 
 	public ABEItem() {
 		super(null);
@@ -35,7 +35,7 @@ public class ABEItem extends Item {
 
 	public ABEItem(Long id, Workspace workspace, Long latestVersion, Item parent, Long clientFileId,
 			String filename, String mimetype, Boolean isFolder,
-			Long clientParentFileVersion, List<ABEMetaComponent> abeComponents, String cipherSymKey) {
+			Long clientParentFileVersion, List<ABEMetaComponent> abeComponents, byte[] cipherSymKey) {
             
 		super(id, workspace, latestVersion, parent, clientFileId, filename, mimetype, isFolder, clientParentFileVersion);
                 this.abeComponents = abeComponents;
@@ -50,11 +50,11 @@ public class ABEItem extends Item {
                 this.abeComponents = abeComponents;
         }
 
-        public String getCipherSymKey() {
+        public byte[] getCipherSymKey() {
                 return cipherSymKey;
         }
 
-        public void setCipherSymKey(String cipherSymKey) {
+        public void setCipherSymKey(byte[] cipherSymKey) {
                 this.cipherSymKey = cipherSymKey;
         }
 

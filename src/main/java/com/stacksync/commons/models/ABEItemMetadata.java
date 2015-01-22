@@ -12,7 +12,7 @@ import java.util.UUID;
 public class ABEItemMetadata extends ItemMetadata {
 
     private List<ABEMetaComponent> abeComponents;
-    private String cipherSymKey;
+    private byte[] cipherSymKey;
 
     public ABEItemMetadata() {
         super();
@@ -22,10 +22,17 @@ public class ABEItemMetadata extends ItemMetadata {
     public ABEItemMetadata( Long id, Long version, UUID deviceId, Long parentId, 
             Long parentVersion, String status, Date modifiedAt, Long checksum, Long size, 
             boolean isFolder, String filename, String mimetype, List<String> chunks, 
-            List<ABEMetaComponent> abeComponents, String cipherSymKey) {
+            List<ABEMetaComponent> abeComponents, byte[] cipherSymKey) {
 
         super(id, version, deviceId, parentId, parentVersion, status, modifiedAt,
                 checksum, size, isFolder, filename, mimetype, chunks);
+        this.abeComponents = abeComponents;
+        this.cipherSymKey = cipherSymKey;
+    }
+    
+    public ABEItemMetadata(ItemMetadata it, List<ABEMetaComponent> abeComponents, byte[] cipherSymKey) {
+        super(it.getId(), it.getVersion(), it.getDeviceId(), it.getParentId(), it.getParentVersion(), it.getStatus(), it.getModifiedAt(),
+                it.getChecksum(), it.getSize(), it.isFolder(), it.getFilename(), it.getMimetype(), it.getChunks());
         this.abeComponents = abeComponents;
         this.cipherSymKey = cipherSymKey;
     }
@@ -46,11 +53,11 @@ public class ABEItemMetadata extends ItemMetadata {
         this.abeComponents.remove(abeMetaComponent);
     }
     
-    public String getCipherSymKey() {
+    public byte[] getCipherSymKey() {
         return cipherSymKey;
     }
 
-    public void setCipherSymKey(String cipherSymKey) {
+    public void setCipherSymKey(byte[] cipherSymKey) {
         this.cipherSymKey = cipherSymKey;
     }
     

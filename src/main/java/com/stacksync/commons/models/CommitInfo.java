@@ -8,10 +8,10 @@ public class CommitInfo implements Serializable {
 	private static final long serialVersionUID = -1205107021066864318L;
 	private Long committedVersion;
 	private boolean commitSucceed;
-	private ItemMetadata metadata;
+	private SyncMetadata metadata;
 
 	public CommitInfo(Long committedVersion, boolean commitSucceed,
-			ItemMetadata metadata) {
+			SyncMetadata metadata) {
 
 		this.committedVersion = committedVersion;
 		this.commitSucceed = commitSucceed;
@@ -35,11 +35,11 @@ public class CommitInfo implements Serializable {
 		this.commitSucceed = commitSucceed;
 	}
 
-	public ItemMetadata getMetadata() {
+	public SyncMetadata getMetadata() {
 		return metadata;
 	}
 
-	public void setMetadata(ItemMetadata metadata) {
+	public void setMetadata(SyncMetadata metadata) {
 		this.metadata = metadata;
 	}
 

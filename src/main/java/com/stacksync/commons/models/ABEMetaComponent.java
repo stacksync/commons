@@ -10,14 +10,14 @@ public class ABEMetaComponent implements Serializable {
     
     private Long id;
     private String attributeId;
-    private String encryptedPKComponent;
+    private byte[] encryptedPKComponent;
     private Long version;
 
     public ABEMetaComponent() {
         this.id = null;
     }
     
-    public ABEMetaComponent(Long id, String attribute, String encryptedPKComponent, Long version) {
+    public ABEMetaComponent(Long id, String attribute, byte[] encryptedPKComponent, Long version) {
         this.id = id;
         this.attributeId = attribute;
         this.encryptedPKComponent = encryptedPKComponent;
@@ -40,11 +40,11 @@ public class ABEMetaComponent implements Serializable {
         this.attributeId = attributeId;
     }
 
-    public String getEncryptedPKComponent() {
+    public byte[] getEncryptedPKComponent() {
         return encryptedPKComponent;
     }
 
-    public void setEncryptedPKComponent(String encryptedPKComponent) {
+    public void setEncryptedPKComponent(byte[] encryptedPKComponent) {
         this.encryptedPKComponent = encryptedPKComponent;
     }
 
