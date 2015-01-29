@@ -1,6 +1,7 @@
 package com.stacksync.commons.models;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,29 +12,31 @@ public class SharingProposal implements Serializable{
 	 */
 	private static final long serialVersionUID = 1582857936402001556L;
 	
-	private Long id;
+	private Integer id;
 	private UUID key;
 	private Boolean isLocal;
 	private Integer service;
 	private String resourceUrl;
-	private Long owner;
+	private UUID owner;
 	private Long folder;
 	private Boolean writeAccess;
 	private String recipient;
 	private String callback;
 	private String protocolVersion;
 	private String status;
+	private Date createdAt;
+	private Date updatedAt;
 
 	public SharingProposal() {
 		this(null);
 	}
 
-	public SharingProposal(Long id) {
-		this(id, null, null, null, null, null, null, null, null, null, null, null);
+	public SharingProposal(Integer id) {
+		this(id, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	}
 
-	public SharingProposal(Long id, UUID key, Boolean isLocal, Integer service, String resourceUrl, Long owner,
-			Long folder, Boolean writeAccess, String recipient, String callback, String protocolVersion, String status) {
+	public SharingProposal(Integer id, UUID key, Boolean isLocal, Integer service, String resourceUrl, UUID owner,
+			Long folder, Boolean writeAccess, String recipient, String callback, String protocolVersion, String status, Date createdAt, Date updatedAt) {
 		this.id = id;
 		this.key = key;
 		this.isLocal = isLocal;
@@ -46,13 +49,15 @@ public class SharingProposal implements Serializable{
 		this.callback = callback;
 		this.protocolVersion = protocolVersion;
 		this.status = status;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -88,11 +93,11 @@ public class SharingProposal implements Serializable{
 		this.resourceUrl = resourceUrl;
 	}
 
-	public Long getOwner() {
+	public UUID getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Long owner) {
+	public void setOwner(UUID owner) {
 		this.owner = owner;
 	}
 
@@ -143,7 +148,13 @@ public class SharingProposal implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedsAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 	public boolean isValid(){
 		//TODO: Implement this method
 		return true;
