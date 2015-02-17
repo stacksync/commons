@@ -18,7 +18,10 @@ public class SharingProposal implements Serializable{
 	private Integer service;
 	private String resourceUrl;
 	private UUID owner;
+	private String ownerName;
+	private String ownerEmail;
 	private Long folder;
+	private String folderName;
 	private Boolean writeAccess;
 	private String recipient;
 	private String callback;
@@ -32,18 +35,21 @@ public class SharingProposal implements Serializable{
 	}
 
 	public SharingProposal(Integer id) {
-		this(id, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		this(id, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	}
 
 	public SharingProposal(Integer id, UUID key, Boolean isLocal, Integer service, String resourceUrl, UUID owner,
-			Long folder, Boolean writeAccess, String recipient, String callback, String protocolVersion, String status, Date createdAt, Date updatedAt) {
+			Long folder, Boolean writeAccess, String recipient, String callback, String protocolVersion, String status, String ownerName, String ownerEmail, String folderName, Date createdAt, Date updatedAt) {
 		this.id = id;
 		this.key = key;
 		this.isLocal = isLocal;
 		this.service = service;
 		this.resourceUrl = resourceUrl;
 		this.owner = owner;
+		this.ownerName = ownerName;
+		this.ownerEmail = ownerEmail;
 		this.folder = folder;
+		this.folderName = folderName;
 		this.writeAccess = writeAccess;
 		this.recipient = recipient;
 		this.callback = callback;
@@ -51,6 +57,30 @@ public class SharingProposal implements Serializable{
 		this.status = status;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
+	public String getOwnerEmail() {
+		return ownerEmail;
+	}
+
+	public void setOwnerEmail(String ownerEmail) {
+		this.ownerEmail = ownerEmail;
+	}
+
+	public String getFolderName() {
+		return folderName;
+	}
+
+	public void setFolderName(String folderName) {
+		this.folderName = folderName;
 	}
 
 	public Integer getId() {
