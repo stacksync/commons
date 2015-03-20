@@ -7,21 +7,38 @@ import com.stacksync.commons.models.CommitInfo;
 
 public class CommitNotification extends Notification implements Serializable {
 
-	protected static final long serialVersionUID = -6718869783377947343L;
+    protected static final long serialVersionUID = -6718869783377947343L;
+    protected List<CommitInfo> items;
+    protected Long limitQuota, usedQuota;
 
-	protected List<CommitInfo> items;
+    public CommitNotification(String requestId, List<CommitInfo> items, Long limitQuota, Long usedQuota) {
+        super(requestId);
+        this.items = items;
+        this.limitQuota = limitQuota;
+        this.usedQuota = usedQuota;
+    }
 
-	public CommitNotification(String requestId, List<CommitInfo> items) {
-		super(requestId);
-		this.items = items;
-	}
+    public List<CommitInfo> getItems() {
+        return items;
+    }
 
-	public List<CommitInfo> getObjects() {
-		return items;
-	}
+    public void setItems(List<CommitInfo> items) {
+        this.items = items;
+    }
 
-	public void setObjects(List<CommitInfo> objects) {
-		this.items = objects;
-	}
+    public Long getLimitQuota() {
+        return limitQuota;
+    }
 
+    public void setLimitQuota(Long limitQuota) {
+        this.limitQuota = limitQuota;
+    }
+    
+    public Long getUsedQuota() {
+        return usedQuota;
+    }
+
+    public void setUsedQuota(Long usedQuota) {
+        this.usedQuota = usedQuota;
+    }
 }
