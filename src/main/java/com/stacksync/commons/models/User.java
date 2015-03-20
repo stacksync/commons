@@ -14,8 +14,9 @@ public class User implements Serializable{
 	private String swiftUser;
 	private String swiftAccount;
 	private String email;
-	private Integer quotaLimit;
-	private Integer quotaUsed;
+	private Long quotaLimit;
+	private Long quotaUsedLogical;
+	private Long quotaUsedReal;
 	private List<Device> devices;
 	private List<Workspace> workspaces;
 
@@ -24,17 +25,18 @@ public class User implements Serializable{
 	}
 
 	public User(UUID id) {
-		this(id, null, null, null, null, null, null);
+		this(id, null, null, null, null, null, null, null);
 	}
 
-	public User(UUID id, String name, String swiftUser, String swiftAccount, String email, Integer quotaLimit, Integer quotaUsed) {
+	public User(UUID id, String name, String swiftUser, String swiftAccount, String email, Long quotaLimit, Long quotaUsedLogical, Long quotaUsedReal) {
 		this.id = id;
 		this.name = name;
 		this.swiftUser = swiftUser;
 		this.swiftAccount = swiftAccount;
 		this.email = email;
 		this.quotaLimit = quotaLimit;
-		this.quotaUsed = quotaUsed;
+		this.quotaUsedLogical = quotaUsedLogical;
+		this.quotaUsedReal = quotaUsedReal;
 		this.devices = new ArrayList<Device>();
 		this.workspaces = new ArrayList<Workspace>();
 	}
@@ -79,20 +81,28 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
-	public Integer getQuotaLimit() {
+	public Long getQuotaLimit() {
 		return quotaLimit;
 	}
 
-	public void setQuotaLimit(Integer quotaLimit) {
+	public void setQuotaLimit(Long quotaLimit) {
 		this.quotaLimit = quotaLimit;
 	}
 
-	public Integer getQuotaUsed() {
-		return quotaUsed;
+	public Long getQuotaUsedReal() {
+		return quotaUsedReal;
 	}
 
-	public void setQuotaUsed(Integer quotaUsed) {
-		this.quotaUsed = quotaUsed;
+	public void setQuotaUsedReal(Long quotaUsed) {
+		this.quotaUsedReal = quotaUsed;
+	}
+
+	public Long getQuotaUsedLogical() {
+		return quotaUsedLogical;
+	}
+
+	public void setQuotaUsedLogical(Long quotaUsedLogical) {
+		this.quotaUsedLogical = quotaUsedLogical;
 	}
 
 	public List<Device> getDevices() {
@@ -143,8 +153,10 @@ public class User implements Serializable{
 							this.getEmail()))
 					&& ((user.getQuotaLimit() == null) && (this.getQuotaLimit() == null) || user.getQuotaLimit()
 							.equals(this.getQuotaLimit()))
-					&& ((user.getQuotaUsed() == null) && (this.getQuotaUsed() == null) || user.getQuotaUsed().equals(
-							this.getQuotaUsed()))) {
+					&& ((user.getQuotaUsedLogical() == null) && (this.getQuotaUsedLogical() == null) || user.getQuotaUsedLogical().equals(
+							this.getQuotaUsedLogical())) 
+					&& ((user.getQuotaUsedReal() == null) && (this.getQuotaUsedReal() == null) || user.getQuotaUsedReal().equals(
+						this.getQuotaUsedReal()))){
 				return true;
 			} else {
 				return false;
@@ -156,8 +168,8 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return String.format("User[id=%s, name=%s, swiftUser=%s, swiftAccount=%s, email=%s, quotaLimit=%s, quotaUsed=%s]", id, name,
-				swiftUser, swiftAccount, email, quotaLimit, quotaUsed);
+		return String.format("User[id=%s, name=%s, swiftUser=%s, swiftAccount=%s, email=%s, quotaLimit=%s, quotaUsedLogial=%s, quotaUsedReal=%s]", id, name,
+				swiftUser, swiftAccount, email, quotaLimit, quotaUsedLogical, quotaUsedReal);
 	}
 
 	/**
@@ -169,7 +181,7 @@ public class User implements Serializable{
 	 */
 	public boolean isValid() {
 		if (this.swiftUser == null || this.email == null || this.name == null || this.quotaLimit == null
-				|| this.quotaUsed == null) {
+				|| this.quotaUsedLogical == null || this.quotaUsedReal == null) {
 			return false;
 		} else {
 			return true;

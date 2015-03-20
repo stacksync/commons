@@ -10,13 +10,13 @@ public class AccountInfo implements Serializable{
 	private UUID userId;
 	private String name;
 	private String email;
-	private Integer quotaLimit;
-	private Integer quotaUsed;
+	private Long quotaLimit;
+	private Long quotaUsed;
 	private String swiftTenant;
 	private String swiftUser;
 	private String swiftAuthUrl;
 	
-	public AccountInfo(UUID userId, String name, String email, Integer quotaLimit, Integer quotaUsed, String swiftTenant,
+	public AccountInfo(UUID userId, String name, String email, Long quotaLimit, Long quotaUsed, String swiftTenant,
 			String swiftUser, String swiftAuthUrl) {
 		super();
 		this.userId = userId;
@@ -57,19 +57,19 @@ public class AccountInfo implements Serializable{
 		this.email = email;
 	}
 
-	public Integer getQuotaLimit() {
+	public Long getQuotaLimit() {
 		return quotaLimit;
 	}
 
-	public void setQuotaLimit(Integer quotaLimit) {
+	public void setQuotaLimit(Long quotaLimit) {
 		this.quotaLimit = quotaLimit;
 	}
 
-	public Integer getQuotaUsed() {
+	public Long getQuotaUsed() {
 		return quotaUsed;
 	}
 
-	public void setQuotaUsed(Integer quotaUsed) {
+	public void setQuotaUsed(Long quotaUsed) {
 		this.quotaUsed = quotaUsed;
 	}
 
