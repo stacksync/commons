@@ -29,6 +29,7 @@ public class ItemMetadata implements Serializable {
 
 	private Integer level; // for API calls
 	private Boolean isRoot; // for API calls
+	
 	private List<ItemMetadata> children;
 
 	public ItemMetadata() {
@@ -38,7 +39,7 @@ public class ItemMetadata implements Serializable {
 
 	public ItemMetadata(Long id, Long version, UUID deviceId, Long parentId,
 			Long parentVersion, String status, Date modifiedAt, Long checksum,
-			Long size, boolean isFolder, String filename, String mimetype,
+			Long size, boolean isFolder, String filename, String mimetype, 
 			List<String> chunks) {
 
 		this.id = id;
@@ -56,7 +57,7 @@ public class ItemMetadata implements Serializable {
 		this.mimetype = mimetype;
 
 		this.isRoot = false;
-
+		
 		if (chunks == null) {
 			this.chunks = new ArrayList<String>();
 		}

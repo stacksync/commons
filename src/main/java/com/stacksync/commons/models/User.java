@@ -19,16 +19,17 @@ public class User implements Serializable{
 	private Long quotaUsedReal;
 	private List<Device> devices;
 	private List<Workspace> workspaces;
+	private Boolean isLocal;
 
 	public User() {
 		this(null);
 	}
 
 	public User(UUID id) {
-		this(id, null, null, null, null, null, null, null);
+		this(id, null, null, null, null, null, null, null, null);
 	}
 
-	public User(UUID id, String name, String swiftUser, String swiftAccount, String email, Long quotaLimit, Long quotaUsedLogical, Long quotaUsedReal) {
+	public User(UUID id, String name, String swiftUser, String swiftAccount, String email, Long quotaLimit, Long quotaUsedLogical, Long quotaUsedReal, Boolean isLocal) {
 		this.id = id;
 		this.name = name;
 		this.swiftUser = swiftUser;
@@ -39,6 +40,15 @@ public class User implements Serializable{
 		this.quotaUsedReal = quotaUsedReal;
 		this.devices = new ArrayList<Device>();
 		this.workspaces = new ArrayList<Workspace>();
+		this.isLocal = isLocal;
+	}
+
+	public Boolean getIsLocal() {
+		return isLocal;
+	}
+
+	public void setIsLocal(Boolean isLocal) {
+		this.isLocal = isLocal;
 	}
 
 	public UUID getId() {
@@ -156,7 +166,8 @@ public class User implements Serializable{
 					&& ((user.getQuotaUsedLogical() == null) && (this.getQuotaUsedLogical() == null) || user.getQuotaUsedLogical().equals(
 							this.getQuotaUsedLogical())) 
 					&& ((user.getQuotaUsedReal() == null) && (this.getQuotaUsedReal() == null) || user.getQuotaUsedReal().equals(
-						this.getQuotaUsedReal()))){
+						this.getQuotaUsedReal()))
+					&&	(user.isValid() == this.isValid())) {
 				return true;
 			} else {
 				return false;
