@@ -110,4 +110,7 @@ public interface ISyncService extends Remote {
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
 	public AccountInfo getAccountInfo(GetAccountRequest request) throws UserNotFoundException;
+        
+        @AsyncMethod
+        public void createUser(UUID userId);
 }
