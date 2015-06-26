@@ -268,9 +268,8 @@ public class ItemMetadata implements Serializable {
 	@Override
 	public String toString() {
 
-		String format = "ItemMetadata: {id=%s, filename=%s, chunks=%s, content=%s}";
-		String result = String.format(format, id, filename, chunks.size(),
-				(children == null) ? 0 : children.size());
+		String format = "ItemMetadata: {id=%s, version=%s, filename=%s, chunks=%s}";
+		String result = String.format(format, id, version, filename, chunks.size());
 
 		return result;
 	}
