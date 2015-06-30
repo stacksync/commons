@@ -1,5 +1,6 @@
-package com.stacksync.commons.models;
+package com.stacksync.commons.models.abe;
 
+import com.stacksync.commons.models.ItemMetadata;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

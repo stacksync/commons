@@ -1,6 +1,8 @@
 package com.stacksync.commons.notifications;
 
+import com.stacksync.commons.models.abe.KPABESecretKey;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class ShareProposalNotification extends Notification implements Serializable {
@@ -16,6 +18,7 @@ public class ShareProposalNotification extends Notification implements Serializa
 	protected String swiftURL;
 	protected boolean isEncrypted;
         protected boolean abeEncrypted;
+        protected HashMap<String, KPABESecretKey> emailsKeys;
 
 	public ShareProposalNotification(UUID workspaceId, String folderName, Long itemId, UUID ownerId,
 			String ownerName, String swiftContainer, String swiftUrl, boolean isEncrypted, boolean abeEncrypted) {
@@ -101,6 +104,14 @@ public class ShareProposalNotification extends Notification implements Serializa
 
         public void setAbeEncrypted(boolean abeEncrypted) {
             this.abeEncrypted = abeEncrypted;
+        }
+        
+        public void setABEKeys(HashMap<String,KPABESecretKey> emailsKeys){
+            this.emailsKeys=emailsKeys;
+        }
+        
+        public HashMap<String,KPABESecretKey> getABEKeys(){
+            return emailsKeys;
         }
 
 }

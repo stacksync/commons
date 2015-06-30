@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.stacksync.commons.models;
+package com.stacksync.commons.models.abe;
 
+import com.stacksync.commons.models.Item;
+import com.stacksync.commons.models.Workspace;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.stacksync.commons.models;
+package com.stacksync.commons.models.abe;
 
 import java.io.Serializable;
 
