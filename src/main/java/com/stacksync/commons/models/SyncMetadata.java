@@ -120,4 +120,25 @@ public abstract class SyncMetadata implements Serializable {
 	public void setIsFolder(Boolean isFolder) {
 		this.isFolder = isFolder;
 	}
+        
+        public String toString(){
+            
+            String item = 
+            "\nid: "+id+
+            "\ntempId: "+tempId+
+            "\nversion: "+version+
+            "\ndeviceId: "+deviceId+
+            "\nworkspaceId: "+workspaceId+
+            "\nparentId: "+parentId+
+            "\nparentVersion: "+parentVersion;
+
+            item+="\nChunks";
+            for(String chunk:chunks){
+                item+="\n\t"+chunk;
+            }
+        
+            item+="\nisFolder: "+isFolder;
+               
+            return item;
+        }
 }
