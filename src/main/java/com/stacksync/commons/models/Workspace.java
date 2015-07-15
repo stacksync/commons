@@ -7,20 +7,20 @@ import java.util.UUID;
 
 public class Workspace implements Serializable {
 
-	private static final long serialVersionUID = 243350300638953723L;
+	protected static final long serialVersionUID = 243350300638953723L;
 
-	private UUID id;
-	private String name;
-	private Item parentItem;
-	private Integer latestRevision;
-	private User owner;
-	private String swiftContainer;
-	private String swiftUrl;
-	private boolean isShared;
-	private boolean isEncrypted;
-        private boolean isAbeEncrypted;
-	private List<Item> items;
-	private List<User> users;
+	protected UUID id;
+	protected String name;
+	protected Item parentItem;
+	protected Integer latestRevision;
+	protected User owner;
+	protected String swiftContainer;
+	protected String swiftUrl;
+	protected boolean isShared;
+	protected boolean isEncrypted;
+        protected boolean isAbeEncrypted;
+	protected List<Item> items;
+	protected List<User> users;
 
 	public Workspace() {
 		this(null);
@@ -39,6 +39,21 @@ public class Workspace implements Serializable {
 		this.items = new ArrayList<Item>();
 		this.users = new ArrayList<User>();
                 this.isAbeEncrypted = false;
+	}
+        
+        public Workspace(UUID id, String name, Item parentItem, Integer latestRevision, User owner, boolean isShared, boolean isEncrypted, List<User> users, List<Item> items, String swiftContainer, String swiftUrl) {
+                this.id = id;
+                this.name = name;
+                this.parentItem = parentItem;
+		this.latestRevision = latestRevision;
+                this.owner = owner;
+                this.swiftContainer = swiftContainer;
+                this.swiftUrl = swiftUrl;
+                this.isShared = isShared;
+                this.isEncrypted = isEncrypted;
+                this.isAbeEncrypted = false;
+                this.items = items;
+		this.users = users;
 	}
 
 	public UUID getId() {

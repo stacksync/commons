@@ -1,6 +1,5 @@
 package com.stacksync.commons.requests;
 
-import com.stacksync.commons.models.abe.KPABESecretKey;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +12,8 @@ public class ShareProposalRequest extends Request implements Serializable {
 	protected static final long serialVersionUID = -5985754297818659212L;
 
 	protected List<String> emails;
-        protected HashMap<String, KPABESecretKey> emailsKeys;
+        protected HashMap<String, HashMap<String,byte[]>> emailsKeys;
+        protected byte[] publicKey;
 	protected Long itemId;
 	protected boolean isEncrypted;
         protected boolean abeEncrypted;
@@ -28,7 +28,7 @@ public class ShareProposalRequest extends Request implements Serializable {
                 this.abeEncrypted = abeEncrypted;
 	}
         
-        public ShareProposalRequest(UUID userId, HashMap<String, KPABESecretKey> emailsKeys,
+        public ShareProposalRequest(UUID userId, byte[] publickey, HashMap<String, HashMap<String,byte[]>> emailsKeys,
 			Long itemId, boolean isEncrypted, boolean abeEncrypted) {
 		super(userId);
 		 
@@ -38,6 +38,7 @@ public class ShareProposalRequest extends Request implements Serializable {
 		this.itemId = itemId;
 		this.isEncrypted = isEncrypted;
                 this.abeEncrypted = abeEncrypted;
+                this.publicKey = publickey;
 	}
 
 	public List<String> getEmails() {
@@ -72,11 +73,20 @@ public class ShareProposalRequest extends Request implements Serializable {
             this.abeEncrypted = abeEncrypted;
         }
         
-        public HashMap<String,KPABESecretKey> getEmailsKeys(){
+        public HashMap<String, HashMap<String,byte[]>> getEmailsKeys(){
             return this.emailsKeys;
         }
                 
-        public void setEmailsKeys(HashMap<String,KPABESecretKey> emailsKeys){
+        public void setEmailsKeys(HashMap<String,HashMap<String,byte[]>> emailsKeys){
             this.emailsKeys = emailsKeys;
         }
+
+        public byte[] getPublicKey() {
+            return publicKey;
+        }
+
+        public void setPublicKey(byte[] publicKey) {
+            this.publicKey = publicKey;
+        }
+        
 }
