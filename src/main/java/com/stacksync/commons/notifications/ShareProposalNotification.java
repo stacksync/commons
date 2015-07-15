@@ -17,7 +17,7 @@ public class ShareProposalNotification extends Notification implements Serializa
 	protected String swiftURL;
 	protected boolean isEncrypted;
         protected boolean abeEncrypted;
-        protected HashMap<String,HashMap<String,byte[]>> emailsKeys;
+        protected HashMap<String,byte[]> keyStruct;
         protected byte[] publicKey;
 
 	public ShareProposalNotification(UUID workspaceId, String folderName, Long itemId, UUID ownerId,
@@ -106,12 +106,12 @@ public class ShareProposalNotification extends Notification implements Serializa
             this.abeEncrypted = abeEncrypted;
         }
         
-        public void setABEKeys(HashMap<String,HashMap<String,byte[]>> emailsKeys){
-            this.emailsKeys=emailsKeys;
+        public void setABEKey(HashMap<String,byte[]> keyStruct){
+            this.keyStruct=keyStruct;
         }
         
-        public HashMap<String,HashMap<String,byte[]>> getABEKeys(){
-            return emailsKeys;
+        public HashMap<String,byte[]> getABEKey(){
+            return keyStruct;
         }
 
         public byte[] getPublicKey() {
