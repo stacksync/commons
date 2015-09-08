@@ -20,6 +20,8 @@ import com.stacksync.commons.exceptions.ShareProposalNotCreatedException;
 import com.stacksync.commons.exceptions.UserNotFoundException;
 import com.stacksync.commons.exceptions.WorkspaceNotUpdatedException;
 import com.stacksync.commons.models.SyncMetadata;
+import com.stacksync.commons.models.User;
+import com.stacksync.commons.models.UserWorkspace;
 
 import omq.Remote;
 import omq.client.annotation.AsyncMethod;
@@ -111,4 +113,15 @@ public interface ISyncService extends Remote {
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
 	public AccountInfo getAccountInfo(GetAccountRequest request) throws UserNotFoundException;
+        
+        /***
+	 * Function used to obtain information about users in a workspace
+	 * @param User 
+         * @param Workspace ID
+	 * 		Information needed to identify the account
+	 * @throws UserNotFoundException 
+	 */
+	@SyncMethod(retry = 3, timeout = 5000)
+	public List<UserWorkspace> getWorkspaceMembers(User user, Workspace workspace) throws UserNotFoundException;
+        
 }

@@ -11,12 +11,21 @@ public class UserWorkspace implements Serializable{
 	private Workspace workspace;
 	private boolean isOwner;
 	private Date joinedAt;
+        private String accessStruc;
 
 	public UserWorkspace(User user, Workspace workspace) {
 		super();
 		this.user = user;
 		this.workspace = workspace;
 	}
+        
+        public UserWorkspace(User user, Workspace workspace, String access_struc) {
+		super();
+		this.user = user;
+		this.workspace = workspace;
+                this.accessStruc = access_struc;
+	}
+                
 	public User getUser() {
 		return user;
 	}
@@ -44,6 +53,27 @@ public class UserWorkspace implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+        
+        public String getAccessStruc() {
+            return accessStruc;
+        }
+
+        public void setAccessStruc(String accessStruc) {
+            this.accessStruc = accessStruc;
+        }
+        
+        @Override
+        public boolean equals(Object comparedWorkspace){
+            
+            if (comparedWorkspace != null && comparedWorkspace instanceof UserWorkspace)
+            {
+                return this.equals(comparedWorkspace);
+            } else if (comparedWorkspace != null && comparedWorkspace instanceof String){
+                return user.getEmail().equals(((UserWorkspace)comparedWorkspace).getUser().getEmail());
+            }
+            
+            return false;
+            
+        }
+        
 }
