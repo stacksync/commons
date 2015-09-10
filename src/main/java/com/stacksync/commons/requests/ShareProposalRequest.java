@@ -18,7 +18,7 @@ public class ShareProposalRequest extends Request implements Serializable {
     protected Long itemId;
     protected boolean isEncrypted;
     protected boolean abeEncrypted;
-    protected Map<String, Integer> attributeUniverse;
+    protected Map<Integer, String> attributeUniverse;
 
     public ShareProposalRequest(UUID userId, List<String> emails,
             Long itemId, boolean isEncrypted, boolean abeEncrypted) {
@@ -44,7 +44,7 @@ public class ShareProposalRequest extends Request implements Serializable {
     }
         
     public ShareProposalRequest(UUID userId, byte[] publickey, HashMap<String, HashMap<String, byte[]>> emailsKeys,
-            Long itemId, boolean isEncrypted, boolean abeEncrypted, Map<String, Integer> attributeUniverse) {
+            Long itemId, boolean isEncrypted, boolean abeEncrypted, Map<Integer, String> attributeUniverse) {
         super(userId);
 
         emails = new ArrayList(Arrays.asList(emailsKeys.keySet().toArray()));
@@ -113,11 +113,11 @@ public class ShareProposalRequest extends Request implements Serializable {
         this.isEncrypted = isEncrypted;
     }
 
-    public Map<String, Integer> getAttributeUniverse() {
+    public Map<Integer, String> getAttributeUniverse() {
         return attributeUniverse;
     }
 
-    public void setAttributeVersion(Map<String, Integer> attributeUniverse) {
+    public void setAttributeVersion(Map<Integer, String> attributeUniverse) {
         this.attributeUniverse = attributeUniverse;
     }
 }
