@@ -6,55 +6,72 @@ import java.util.UUID;
 
 public class ABEWorkspace extends Workspace implements Serializable {
 
-        private byte [] secretKey;
-        private byte[] publicKey;
-        private byte[] access_struct;
+    private byte[] secretKey;
+    private byte[] publicKey;
+    private byte[] access_struct;
+    private HashMap<String, HashMap<Long, byte[]>> attributeHistory;
 
-        public ABEWorkspace() {
-                this((UUID)null);
-        }
+    public ABEWorkspace() {
+        this((UUID) null);
+    }
 
-        public ABEWorkspace(UUID id) {
-                this(id, 0, null, null, null, null);
-        }
+    public ABEWorkspace(UUID id) {
+        this(id, 0, null, null, null, null);
+    }
 
-        public ABEWorkspace(Workspace workspace) {
-            super(workspace.getId(), workspace.getName(), workspace.getParentItem(), workspace.getLatestRevision(), workspace.getOwner(), true, false, 
-                    workspace.getUsers(), workspace.getItems(), workspace.getSwiftContainer(), workspace.getSwiftUrl());
-            this.isAbeEncrypted = true;
-        }
-                
-        public ABEWorkspace(UUID id, Integer latestRevision, User owner, byte[] access_struct, byte[] secretKey, byte[] publicKey) {
-            super(id, latestRevision, owner, true, false);
-            this.isAbeEncrypted = true;
-            this.secretKey=secretKey;
-            this.publicKey=publicKey;
-            this.access_struct=access_struct;
-        }
+    public ABEWorkspace(Workspace workspace) {
+        super(workspace.getId(), workspace.getName(), workspace.getParentItem(), workspace.getLatestRevision(), workspace.getOwner(), true, false,
+                workspace.getUsers(), workspace.getItems(), workspace.getSwiftContainer(), workspace.getSwiftUrl());
+        this.isAbeEncrypted = true;
+    }
 
-        public byte[] getSecretKey() {
-            return secretKey;
-        }
+    public ABEWorkspace(UUID id, Integer latestRevision, User owner, byte[] access_struct, byte[] secretKey, byte[] publicKey) {
+        super(id, latestRevision, owner, true, false);
+        this.isAbeEncrypted = true;
+        this.secretKey = secretKey;
+        this.publicKey = publicKey;
+        this.access_struct = access_struct;
+    }
 
-        public void setSecretKey(byte[] secretKey) {
-            this.secretKey = secretKey;
-        }
+    public ABEWorkspace(UUID id, Integer latestRevision, User owner, byte[] access_struct, byte[] secretKey, byte[] publicKey, HashMap<String, HashMap<Long, byte[]>> attributeHistory) {
+        super(id, latestRevision, owner, true, false);
+        this.isAbeEncrypted = true;
+        this.secretKey = secretKey;
+        this.publicKey = publicKey;
+        this.access_struct = access_struct;
+        this.attributeHistory = attributeHistory;
+    }
 
-        public byte[] getPublicKey() {
-            return publicKey;
-        }
+    public byte[] getSecretKey() {
+        return secretKey;
+    }
 
-        public void setPublicKey(byte[] publicKey) {
-            this.publicKey = publicKey;
-        }
+    public void setSecretKey(byte[] secretKey) {
+        this.secretKey = secretKey;
+    }
 
-        public byte[] getAccess_struct() {
-            return access_struct;
-        }
+    public byte[] getPublicKey() {
+        return publicKey;
+    }
 
-        public void setAccess_struct(byte[] access_struct) {
-            this.access_struct = access_struct;
-        }
-        
-        
+    public void setPublicKey(byte[] publicKey) {
+        this.publicKey = publicKey;
+    }
+
+    public byte[] getAccess_struct() {
+        return access_struct;
+    }
+
+    public void setAccess_struct(byte[] access_struct) {
+        this.access_struct = access_struct;
+    }
+
+    public HashMap<String, HashMap<Long, byte[]>> getAttributeHistory() {
+        return attributeHistory;
+    }
+
+    public void setAttributeHistory(HashMap<String, HashMap<Long, byte[]>> attributeHistory) {
+        this.attributeHistory = attributeHistory;
+    }
+
 }

@@ -18,7 +18,7 @@ public class ShareProposalRequest extends Request implements Serializable {
     protected Long itemId;
     protected boolean isEncrypted;
     protected boolean abeEncrypted;
-    protected Map<String, Long> attributeVersion;
+    protected Map<String, Integer> attributeUniverse;
 
     public ShareProposalRequest(UUID userId, List<String> emails,
             Long itemId, boolean isEncrypted, boolean abeEncrypted) {
@@ -31,7 +31,7 @@ public class ShareProposalRequest extends Request implements Serializable {
     }
 
     public ShareProposalRequest(UUID userId, byte[] publickey, HashMap<String, HashMap<String, byte[]>> emailsKeys,
-            Long itemId, boolean isEncrypted, boolean abeEncrypted, Map<String, Long> attributeVersion) {
+            Long itemId, boolean isEncrypted, boolean abeEncrypted) {
         super(userId);
 
         emails = new ArrayList(Arrays.asList(emailsKeys.keySet().toArray()));
@@ -41,7 +41,20 @@ public class ShareProposalRequest extends Request implements Serializable {
         this.isEncrypted = isEncrypted;
         this.abeEncrypted = abeEncrypted;
         this.publicKey = publickey;
-        this.attributeVersion = attributeVersion;
+    }
+        
+    public ShareProposalRequest(UUID userId, byte[] publickey, HashMap<String, HashMap<String, byte[]>> emailsKeys,
+            Long itemId, boolean isEncrypted, boolean abeEncrypted, Map<String, Integer> attributeUniverse) {
+        super(userId);
+
+        emails = new ArrayList(Arrays.asList(emailsKeys.keySet().toArray()));
+
+        this.emailsKeys = emailsKeys;
+        this.itemId = itemId;
+        this.isEncrypted = isEncrypted;
+        this.abeEncrypted = abeEncrypted;
+        this.publicKey = publickey;
+        this.attributeUniverse = attributeUniverse;
     }
 
     public List<String> getEmails() {
@@ -100,11 +113,11 @@ public class ShareProposalRequest extends Request implements Serializable {
         this.isEncrypted = isEncrypted;
     }
 
-    public Map<String, Long> getAttributeVersion() {
-        return attributeVersion;
+    public Map<String, Integer> getAttributeUniverse() {
+        return attributeUniverse;
     }
 
-    public void setAttributeVersion(Map<String, Long> attributeVersion) {
-        this.attributeVersion = attributeVersion;
+    public void setAttributeVersion(Map<String, Integer> attributeUniverse) {
+        this.attributeUniverse = attributeUniverse;
     }
 }
