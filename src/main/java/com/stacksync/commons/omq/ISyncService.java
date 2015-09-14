@@ -22,6 +22,7 @@ import com.stacksync.commons.exceptions.WorkspaceNotUpdatedException;
 import com.stacksync.commons.models.SyncMetadata;
 import com.stacksync.commons.models.User;
 import com.stacksync.commons.models.UserWorkspace;
+import com.stacksync.commons.requests.RevokeProposalRequest;
 
 import omq.Remote;
 import omq.client.annotation.AsyncMethod;
@@ -123,5 +124,16 @@ public interface ISyncService extends Remote {
 	 */
 	@SyncMethod(retry = 3, timeout = 5000)
 	public List<UserWorkspace> getWorkspaceMembers(User user, Workspace workspace) throws UserNotFoundException;
+        
+        
+        /***
+	 * Function used to revoke a list of users
+         * @param accountId
+         * @param workspaceId
+         * @param revokeMessages
+	 * 		Information needed to identify the account
+	 * @throws UserNotFoundException 
+	 */
+        public void createRevokeProposal(RevokeProposalRequest request) throws UserNotFoundException;
         
 }
