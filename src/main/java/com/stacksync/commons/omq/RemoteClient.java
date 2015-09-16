@@ -1,5 +1,6 @@
 package com.stacksync.commons.omq;
 
+import com.stacksync.commons.notifications.RevokeNotification;
 import com.stacksync.commons.notifications.ShareProposalNotification;
 import com.stacksync.commons.notifications.UpdateWorkspaceNotification;
 
@@ -18,4 +19,8 @@ public interface RemoteClient extends Remote {
 	@MultiMethod
 	@AsyncMethod
 	void notifyUpdateWorkspace(UpdateWorkspaceNotification notification);
+        
+        @MultiMethod
+	@AsyncMethod
+	void notifyRevokation(RevokeNotification notification);
 }
